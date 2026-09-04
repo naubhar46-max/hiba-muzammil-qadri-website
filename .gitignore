@@ -1,0 +1,22 @@
+# Environment secrets — never commit real values
+.env
+.env.local
+.env.*.local
+
+# Dependencies (once a build system is introduced)
+node_modules/
+
+# OS / editor files
+.DS_Store
+Thumbs.db
+*.swp
+
+# Build output (once a build system is introduced)
+dist/
+build/
+.next/
+.sanity/
+
+# Logs
+*.log
+npm-debug.log*
