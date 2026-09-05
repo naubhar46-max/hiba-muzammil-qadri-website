@@ -1512,6 +1512,110 @@
       })
       .catch(() => { /* Sanity unreachable — keep existing trackLinks and artwork */ });
   })();
+
+  // ---------- SANITY CMS: MULTILINGUAL PORTFOLIO (progressive enhancement) ----------
+  // Populates #langSelector and #langContent from Sanity's `language` and
+  // `musicItem` (with a language reference) documents. Reuses the site's
+  // existing .chip and .track-card/.disco-grid styles — no new CSS. If
+  // Sanity is unreachable or no languages are published yet, the existing
+  // "Languages launching soon" empty state stays exactly as it is.
+  (function loadMultilingualFromSanity(){
+    const SANITY_PROJECT_ID = '7rufe5dw';
+    const SANITY_DATASET = 'production';
+    const query = encodeURIComponent(
+      '{"languages": *[_type=="language" && active==true] | order(order asc){_id, name, nativeName},' +
+      '"items": *[_type=="musicItem" && published==true && defined(language)]' +
+      '{title, description, youtubeUrl, "artworkRef": artwork.asset._ref, "languageId": language._ref}}'
+    );
+    const url = `https://${SANITY_PROJECT_ID}.api.sanity.io/v2025-08-15/data/query/${SANITY_DATASET}?query=${query}`;
+
+    function assetRefToUrl(ref){
+      const m = ref && ref.match(/^image-([a-f0-9]+)-(\d+x\d+)-([a-z]+)$/);
+      if(!m) return null;
+      const [, hash, dims, format] = m;
+      return `https://cdn.sanity.io/images/${SANITY_PROJECT_ID}/${SANITY_DATASET}/${hash}-${dims}.${format}`;
+    }
+
+    function renderLangContent(tracks){
+      const container = document.getElementById('langContent');
+      container.innerHTML = '';
+      const grid = document.createElement('div');
+      grid.className = 'disco-grid';
+      tracks.forEach(t => {
+        const card = document.createElement('div');
+        card.className = 'track-card';
+        card.style.cursor = 'pointer';
+        const thumb = document.createElement('div');
+        thumb.className = 'track-thumb';
+        if(t.artworkUrl){
+          const img = document.createElement('img');
+          img.src = t.artworkUrl;
+          img.alt = t.title;
+          img.loading = 'lazy';
+          thumb.appendChild(img);
+        }
+        thumb.insertAdjacentHTML('beforeend', '<span class="play-badge"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span>');
+        const info = document.createElement('div');
+        info.className = 'track-info';
+        const h4 = document.createElement('h4');
+        h4.textContent = t.title;
+        const meta = document.createElement('p');
+        meta.className = 'meta';
+        meta.textContent = t.description || '';
+        info.appendChild(h4);
+        info.appendChild(meta);
+        card.appendChild(thumb);
+        card.appendChild(info);
+        card.addEventListener('click', () => {
+          const img = card.querySelector('img');
+          openModal(img ? img.src : '', t.title, '', t.description || '');
+        });
+        grid.appendChild(card);
+      });
+      container.appendChild(grid);
+    }
+
+    function renderLangSelector(languages, onSelect){
+      const container = document.getElementById('langSelector');
+      container.innerHTML = '';
+      languages.forEach((lang, i) => {
+        const chip = document.createElement('button');
+        chip.type = 'button';
+        chip.className = 'chip' + (i === 0 ? ' active' : '');
+        chip.textContent = lang.nativeName ? `${lang.name} · ${lang.nativeName}` : lang.name;
+        chip.addEventListener('click', () => {
+          container.querySelectorAll('.chip').forEach(c => c.classList.remove('active'));
+          chip.classList.add('active');
+          onSelect(lang._id);
+        });
+        container.appendChild(chip);
+      });
+    }
+
+    fetch(url)
+      .then(res => res.ok ? res.json() : Promise.reject(new Error('Sanity request failed')))
+      .then(data => {
+        const languages = (data.result && data.result.languages) || [];
+        const items = (data.result && data.result.items) || [];
+        if(languages.length === 0) return; // keep "Languages launching soon" as-is
+
+        const byLang = {};
+        items.forEach(it => {
+          if(it.youtubeUrl) trackLinks[it.title] = it.youtubeUrl;
+          const artworkUrl = assetRefToUrl(it.artworkRef);
+          if(!byLang[it.languageId]) byLang[it.languageId] = [];
+          byLang[it.languageId].push({ title: it.title, description: it.description, artworkUrl });
+        });
+
+        const populatedLanguages = languages.filter(l => (byLang[l._id] || []).length > 0);
+        if(populatedLanguages.length === 0) return; // keep empty state
+
+        document.getElementById('multilingualEmptyState').style.display = 'none';
+        renderLangSelector(populatedLanguages, (langId) => renderLangContent(byLang[langId] || []));
+        renderLangContent(byLang[populatedLanguages[0]._id] || []);
+      })
+      .catch(() => { /* Sanity unreachable — keep "Languages launching soon" as-is */ });
+  })();
 </script>
 </body>
 </html>
