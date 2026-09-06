@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://naubhar46-max.github.io/hiba-muzammil-qadri-website/sitemap.xml
