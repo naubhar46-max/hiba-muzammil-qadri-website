@@ -2290,9 +2290,12 @@
     const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     const PHONE_RE = /^[0-9+\-\s()]{7,}$/;
 
-    formEl.addEventListener('submit', (e) => {
+    const WORKER_URL = 'https://hiba-contact-worker.naubhar46.workers.dev';
+    let submitting = false;
+
+    formEl.addEventListener('submit', async (e) => {
       e.preventDefault();
-      if(!activeCategory) return;
+      if(!activeCategory || submitting) return;
 
       // honeypot: silently pretend success without sending
       const honeypot = document.getElementById('contactHoneypot');
@@ -2305,6 +2308,7 @@
 
       let valid = true;
       const lines = [`Inquiry Category: ${activeCategory.label}`, ''];
+      const fieldsPayload = { category: activeCategory.id };
 
       fieldsEl.querySelectorAll('.contact-field').forEach(wrap => {
         if(wrap.hidden) { wrap.classList.remove('has-error'); return; }
@@ -2318,7 +2322,10 @@
         wrap.classList.toggle('has-error', !fieldValid);
         ctrl.classList.toggle('invalid', !fieldValid);
         if(!fieldValid) valid = false;
-        if(value) lines.push(`${wrap.querySelector('label').textContent.replace('*','').trim()}: ${value}`);
+        if(value){
+          lines.push(`${wrap.querySelector('label').textContent.replace('*','').trim()}: ${value}`);
+          fieldsPayload[ctrl.name] = value;
+        }
       });
 
       if(!valid){
@@ -2327,13 +2334,42 @@
         return;
       }
 
-      const subject = encodeURIComponent(`New Inquiry: ${activeCategory.label}`);
-      const body = encodeURIComponent(lines.join('\n'));
-      window.location.href = `mailto:${RECIPIENT}?subject=${subject}&body=${body}`;
+      const submitBtn = formEl.querySelector('button[type="submit"]');
+      const originalBtnHTML = submitBtn.innerHTML;
+      submitting = true;
+      submitBtn.disabled = true;
+      submitBtn.innerHTML = 'Sending…';
 
-      panelEl.hidden = true;
-      confirmationEl.hidden = false;
-      confirmationEl.scrollIntoView({ behavior:'smooth', block:'start' });
+      function showConfirmation(){
+        panelEl.hidden = true;
+        confirmationEl.hidden = false;
+        confirmationEl.scrollIntoView({ behavior:'smooth', block:'start' });
+      }
+      function resetSubmitButton(){
+        submitting = false;
+        submitBtn.disabled = false;
+        submitBtn.innerHTML = originalBtnHTML;
+      }
+
+      try {
+        const res = await fetch(WORKER_URL, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(fieldsPayload),
+        });
+        const data = await res.json().catch(() => ({}));
+        if(!res.ok || !data.ok) throw new Error(data.error || 'Submission failed');
+        showConfirmation();
+      } catch (err) {
+        // Graceful fallback: if the Worker is unreachable, still get the
+        // inquiry to the artist's team via the visitor's own email app.
+        const subject = encodeURIComponent(`New Inquiry: ${activeCategory.label}`);
+        const body = encodeURIComponent(lines.join('\n'));
+        window.location.href = `mailto:${RECIPIENT}?subject=${subject}&body=${body}`;
+        showConfirmation();
+      } finally {
+        resetSubmitButton();
+      }
     });
   })();
 </script>
