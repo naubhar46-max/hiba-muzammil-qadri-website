@@ -1493,6 +1493,7 @@
       <h3 id="contactFormTitle"></h3>
       <p class="contact-form-intro" id="contactFormIntro"></p>
       <div class="contact-note" id="contactFormNotice" hidden></div>
+      <div class="contact-note" id="contactSubmitError" hidden style="border-color:var(--burgundy); background:rgba(138,33,64,.08); color:var(--burgundy);"></div>
       <form id="contactForm" novalidate>
         <div class="contact-fields" id="contactFields"></div>
         <input type="text" name="_hp" id="contactHoneypot" autocomplete="off" tabindex="-1" style="position:absolute; left:-9999px; width:1px; height:1px; opacity:0;" aria-hidden="true">
@@ -2252,6 +2253,7 @@
       }
       fieldsEl.innerHTML = cat.fields.map(f => fieldHTML(cat, f)).join('');
       formEl.reset();
+      document.getElementById('contactSubmitError').hidden = true;
       categoriesEl.hidden = true;
       confirmationEl.hidden = true;
       panelEl.hidden = false;
@@ -2351,25 +2353,41 @@
         submitBtn.innerHTML = originalBtnHTML;
       }
 
+      const errorEl = document.getElementById('contactSubmitError');
+      errorEl.hidden = true;
+
+      let response = null;
       try {
-        const res = await fetch(WORKER_URL, {
+        response = await fetch(WORKER_URL, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify(fieldsPayload),
         });
-        const data = await res.json().catch(() => ({}));
-        if(!res.ok || !data.ok) throw new Error(data.error || 'Submission failed');
-        showConfirmation();
-      } catch (err) {
-        // Graceful fallback: if the Worker is unreachable, still get the
-        // inquiry to the artist's team via the visitor's own email app.
+      } catch (networkErr) {
+        // Genuinely unreachable (offline, DNS, CORS, etc.) — fall back to
+        // the visitor's own email app so the inquiry still gets sent.
         const subject = encodeURIComponent(`New Inquiry: ${activeCategory.label}`);
         const body = encodeURIComponent(lines.join('\n'));
         window.location.href = `mailto:${RECIPIENT}?subject=${subject}&body=${body}`;
         showConfirmation();
-      } finally {
         resetSubmitButton();
+        return;
       }
+
+      const data = await response.json().catch(() => ({}));
+      if(response.ok && data.ok){
+        showConfirmation();
+      } else {
+        // The Worker responded but rejected the request (e.g. rate limit,
+        // validation, or a temporary Sanity issue) — tell the visitor
+        // plainly instead of silently pretending success.
+        errorEl.textContent = response.status === 429
+          ? 'Too many inquiries have been submitted recently. Please wait a while and try again, or email us directly at ' + RECIPIENT + '.'
+          : 'Something went wrong while sending your inquiry. Please try again in a moment, or email us directly at ' + RECIPIENT + '.';
+        errorEl.hidden = false;
+        errorEl.scrollIntoView({ behavior:'smooth', block:'center' });
+      }
+      resetSubmitButton();
     });
   })();
 </script>
