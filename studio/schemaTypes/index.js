@@ -6,6 +6,7 @@ import galleryItem from './galleryItem'
 import socialLink from './socialLink'
 import musicPlatformLink from './musicPlatformLink'
 import siteSettings from './siteSettings'
+import inquiry from './inquiry'
 
 export const schemaTypes = [
   language,
@@ -16,4 +17,5 @@ export const schemaTypes = [
   socialLink,
   musicPlatformLink,
   siteSettings,
+  inquiry,
 ]
