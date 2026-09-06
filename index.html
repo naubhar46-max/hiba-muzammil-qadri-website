@@ -497,6 +497,62 @@
   .social-btn:hover{background:var(--emerald); color:var(--ivory); transform:translateY(-2px);}
   .social-btn svg{width:18px; height:18px;}
 
+  /* ---------- CONTACT / INQUIRY SYSTEM ---------- */
+  .contact-note{
+    padding:14px 20px; border:1px solid rgba(174,132,52,.35); background:rgba(174,132,52,.08);
+    border-radius:10px; font-size:.85rem; color:var(--ink-soft); text-align:center; line-height:1.6;
+  }
+  .contact-categories{
+    display:grid; grid-template-columns:repeat(4,1fr); gap:18px; max-width:1000px; margin:0 auto;
+  }
+  .contact-category-btn{
+    display:flex; flex-direction:column; align-items:flex-start; gap:10px; text-align:left;
+    padding:22px 20px; border-radius:var(--radius); border:1px solid rgba(174,132,52,.35);
+    background:var(--ivory); cursor:pointer; box-shadow:var(--shadow-sm);
+    transition:transform .25s ease, box-shadow .25s ease, border-color .25s ease;
+    font-family:var(--sans); color:var(--ink);
+  }
+  .contact-category-btn:hover{transform:translateY(-4px); box-shadow:20px 26px -16px rgba(60,38,20,.32); border-color:var(--gold);}
+  .contact-category-btn .num{font-family:var(--serif); color:var(--gold); font-size:1.3rem; font-weight:600;}
+  .contact-category-btn .label{font-size:.95rem; color:var(--emerald-deep); font-weight:500; line-height:1.35;}
+  .contact-form-panel{
+    max-width:760px; margin:0 auto; background:var(--ivory); border:1px solid rgba(174,132,52,.35);
+    border-radius:var(--radius); padding:40px clamp(20px,4vw,44px); box-shadow:var(--shadow);
+  }
+  .contact-back{
+    display:inline-flex; align-items:center; gap:6px; background:none; border:none; cursor:pointer;
+    color:var(--ink-soft); font-size:.85rem; font-family:var(--sans); padding:0; margin-bottom:22px;
+  }
+  .contact-back svg{width:16px; height:16px;}
+  .contact-back:hover{color:var(--emerald-deep);}
+  .contact-form-panel h3{font-size:1.5rem; margin-bottom:8px;}
+  .contact-form-intro{color:var(--ink-soft); font-size:.92rem; margin-bottom:22px; max-width:60ch;}
+  .contact-form-panel .contact-note{margin-bottom:26px; text-align:left;}
+  .contact-fields{display:grid; grid-template-columns:1fr 1fr; gap:18px 20px;}
+  .contact-field{display:flex; flex-direction:column; gap:6px;}
+  .contact-field.full{grid-column:1 / -1;}
+  .contact-field label{font-size:.82rem; color:var(--ink-soft); font-weight:500;}
+  .contact-field label .req{color:var(--burgundy);}
+  .contact-field input, .contact-field select, .contact-field textarea{
+    width:100%; padding:12px 16px; border-radius:10px; border:1.5px solid rgba(174,132,52,.35);
+    background:var(--ivory); font-family:var(--sans); font-size:.92rem; color:var(--ink);
+    transition:border-color .2s ease, box-shadow .2s ease;
+  }
+  .contact-field textarea{resize:vertical; min-height:96px;}
+  .contact-field input:focus, .contact-field select:focus, .contact-field textarea:focus{
+    outline:none; border-color:var(--emerald); box-shadow:0 0 0 3px rgba(14,92,76,.12);
+  }
+  .contact-field input.invalid, .contact-field select.invalid, .contact-field textarea.invalid{border-color:var(--burgundy);}
+  .contact-field .err{font-size:.76rem; color:var(--burgundy); display:none;}
+  .contact-field.has-error .err{display:block;}
+  .contact-confirmation{
+    max-width:600px; margin:0 auto; text-align:center; background:var(--ivory);
+    border:1px solid rgba(174,132,52,.35); border-radius:var(--radius); padding:48px clamp(20px,4vw,44px);
+    box-shadow:var(--shadow);
+  }
+  .contact-confirmation h3{font-size:1.4rem; color:var(--emerald-deep); margin-bottom:14px;}
+  .contact-confirmation p{color:var(--ink-soft); margin-bottom:10px;}
+
   /* ---------- FOOTER ---------- */
   footer{
     background:linear-gradient(160deg, var(--plum), #3c1c39 75%); color:var(--champagne); position:relative; overflow:hidden;
@@ -575,6 +631,7 @@
     .platform-grid{grid-template-columns:repeat(3,1fr);}
     .pl-yt-grid{grid-template-columns:repeat(2,1fr) !important;}
     .pl-social-grid{grid-template-columns:repeat(3,1fr) !important;}
+    .contact-categories{grid-template-columns:repeat(2,1fr);}
     .footer-top{grid-template-columns:1fr 1fr;}
     .modal-box{grid-template-columns:1fr; overflow-y:auto;}
     .modal-box img{aspect-ratio:1/1;}
@@ -606,6 +663,8 @@
     .platform-grid{grid-template-columns:repeat(2,1fr);}
     .pl-yt-grid{grid-template-columns:repeat(2,1fr) !important;}
     .pl-social-grid{grid-template-columns:repeat(2,1fr) !important;}
+    .contact-categories{grid-template-columns:1fr;}
+    .contact-fields{grid-template-columns:1fr !important;}
     .footer-top{grid-template-columns:1fr;}
     .coming-soon-strip{flex-direction:column; text-align:center;}
     .arch-frame{width:78%;}
@@ -1341,13 +1400,45 @@
         <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l1.6 5h5.2l-4.2 3.2 1.6 5-4.2-3.1L7.8 15.2l1.6-5L5.2 7h5.2z"/></svg>
         Contact
       </p>
-      <h2>Get in touch</h2>
-      <p>For business enquiries, collaborations or press, reach Hiba's team by email.</p>
+      <h2>Contact Hiba</h2>
+      <p style="font-style:italic; color:var(--gold); font-family:var(--serif); margin-top:2px;">Connect with Hiba's Official Management</p>
+      <p>For bookings, collaborations, media inquiries, PR opportunities and serious requests to connect with Hiba, please select the appropriate category below. All inquiries are reviewed by the official management team.</p>
     </div>
-    <div style="display:flex; justify-content:center;">
-      <a class="social-btn" href="mailto:hibamuzammilqadri11@gmail.com" style="padding:18px 34px; font-size:1.02rem;">
+
+    <div class="contact-note" style="max-width:720px; margin:0 auto 40px;">Submitting an inquiry is free. Where applicable, professional fees or commercial terms may apply depending on the nature, scope, duration, location and requirements of the request. Applicable details will be communicated by the official management team after review.</div>
+
+    <div class="contact-categories" id="contactCategories"></div>
+
+    <div class="contact-form-panel" id="contactFormPanel" hidden>
+      <button type="button" class="contact-back" id="contactBack">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        All categories
+      </button>
+      <h3 id="contactFormTitle"></h3>
+      <p class="contact-form-intro" id="contactFormIntro"></p>
+      <div class="contact-note" id="contactFormNotice" hidden></div>
+      <form id="contactForm" novalidate>
+        <div class="contact-fields" id="contactFields"></div>
+        <input type="text" name="_hp" id="contactHoneypot" autocomplete="off" tabindex="-1" style="position:absolute; left:-9999px; width:1px; height:1px; opacity:0;" aria-hidden="true">
+        <button type="submit" class="btn btn-solid" style="margin-top:8px;">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+          Send Inquiry
+        </button>
+      </form>
+    </div>
+
+    <div class="contact-confirmation" id="contactConfirmation" hidden>
+      <svg viewBox="0 0 24 24" fill="none" stroke="var(--emerald)" stroke-width="1.6" style="width:46px;height:46px;margin:0 auto 18px;display:block;"><circle cx="12" cy="12" r="9.5"/><path d="M8 12.5l2.5 2.5L16 9.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <h3>Thank you. Your inquiry has been received successfully.</h3>
+      <p>Our official management team will review your request and contact you if it can be accommodated.</p>
+      <p>Please note that submission of an inquiry does not guarantee availability, confirmation or direct access to Hiba.</p>
+      <button type="button" class="btn btn-outline" id="contactReset" style="margin-top:22px;">Submit another inquiry</button>
+    </div>
+
+    <div style="display:flex; justify-content:center; margin-top:44px;">
+      <a class="social-btn" href="mailto:hibamuzammilqadri11@gmail.com" style="padding:14px 28px; font-size:.92rem;">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="5" width="18" height="14" rx="2.5"/><path d="M4 6.5l8 6 8-6"/></svg>
-        hibamuzammilqadri11@gmail.com
+        Prefer direct email? hibamuzammilqadri11@gmail.com
       </a>
     </div>
   </div>
@@ -1850,6 +1941,324 @@
         renderLangContent(byLang[populatedLanguages[0]._id] || []);
       })
       .catch(() => { /* Sanity unreachable — keep "Languages launching soon" as-is */ });
+  })();
+
+  // ---------- CONTACT & ARTIST INQUIRY SYSTEM ----------
+  // Static-site friendly: no backend/database exists for this project, so
+  // submissions are sent via the visitor's own email app (mailto:) to the
+  // site's existing official address — no new service, account or API key
+  // required. If a real backend is added later, only this block's submit
+  // handler needs to change.
+  (function contactInquirySystem(){
+    const RECIPIENT = 'hibamuzammilqadri11@gmail.com';
+    const F = (type, extra) => Object.assign({ type }, extra);
+
+    const CONTACT_CATEGORIES = [
+      {
+        id: 'booking',
+        label: 'Nasheed Performance & Event Booking',
+        intro: 'For Nasheed and Naat programs, Islamic conferences, Ramadan and Eid programs, Milad/Seerat events, charity, community and educational events, private gatherings, and international Islamic events.',
+        fields: [
+          F('text', { name: 'fullName', label: 'Full Name', required: true }),
+          F('text', { name: 'organizer', label: 'Organization / Event Organizer' }),
+          F('email', { name: 'email', label: 'Email Address', required: true }),
+          F('tel', { name: 'whatsapp', label: 'WhatsApp / Phone Number', required: true }),
+          F('text', { name: 'country', label: 'Country', required: true }),
+          F('text', { name: 'city', label: 'City' }),
+          F('select', { name: 'eventType', label: 'Event Type', required: true, options: ['Nasheed Program','Naat Program','Islamic Conference','Ramadan Program','Eid Program','Milad / Seerat Event','Charity Event','Community Event','Educational Event','Private Family / Community Gathering','International Islamic Event','Special Appearance','Other'] }),
+          F('date', { name: 'eventDate', label: 'Event Date' }),
+          F('text', { name: 'venue', label: 'Venue' }),
+          F('text', { name: 'audience', label: 'Expected Audience' }),
+          F('textarea', { name: 'eventDescription', label: 'Event Description', full: true, required: true }),
+          F('textarea', { name: 'requirements', label: 'Performance Requirements', full: true }),
+          F('select', { name: 'preferredContact', label: 'Preferred Contact Method', options: ['Email','WhatsApp','Phone Call'] }),
+          F('textarea', { name: 'additional', label: 'Additional Details', full: true }),
+          F('url', { name: 'eventLink', label: 'Event Website / Social Media Link (optional)', full: true }),
+        ],
+      },
+      {
+        id: 'collaboration',
+        label: 'Islamic Music & Nasheed Collaboration',
+        intro: 'For Nasheed/Naat/vocal collaboration, international artist collaboration, Islamic music projects, lyricist/composer/producer collaboration, and Islamic content creator collaboration.',
+        notice: "Please provide enough information for the management team to understand the proposed collaboration.",
+        fields: [
+          F('text', { name: 'fullName', label: 'Full Name', required: true }),
+          F('text', { name: 'artistOrg', label: 'Artist / Organization Name' }),
+          F('text', { name: 'country', label: 'Country', required: true }),
+          F('text', { name: 'city', label: 'City' }),
+          F('email', { name: 'email', label: 'Email', required: true }),
+          F('tel', { name: 'whatsapp', label: 'WhatsApp / Phone', required: true }),
+          F('select', { name: 'collabType', label: 'Collaboration Type', required: true, options: ['Nasheed Collaboration','Naat Collaboration','Vocal Collaboration','International Nasheed Artist Collaboration','Islamic Music Project','Lyricist / Composer Collaboration','Producer Collaboration','Islamic Content Creator Collaboration','Other'] }),
+          F('text', { name: 'projectTitle', label: 'Project Title' }),
+          F('textarea', { name: 'projectDescription', label: 'Project Description', full: true, required: true }),
+          F('text', { name: 'role', label: 'Your Role in the Project' }),
+          F('url', { name: 'reference', label: 'Reference / Portfolio Link' }),
+          F('text', { name: 'timeline', label: 'Proposed Timeline' }),
+          F('textarea', { name: 'additional', label: 'Additional Message', full: true }),
+        ],
+      },
+      {
+        id: 'pr',
+        label: 'PR, Media & Artist Promotion',
+        intro: 'PR campaigns, media coverage, digital and social media promotion, artist features, project promotion, press releases, interview promotion and custom PR/media packages.',
+        notice: "PR and promotional opportunities are reviewed individually according to the nature, scope, platforms, duration and requirements of each campaign. Customized packages and applicable professional charges will be shared after reviewing your inquiry.",
+        fields: [
+          F('text', { name: 'fullName', label: 'Full Name', required: true }),
+          F('text', { name: 'org', label: 'Organization / Company' }),
+          F('email', { name: 'email', label: 'Email', required: true }),
+          F('tel', { name: 'whatsapp', label: 'WhatsApp / Phone', required: true }),
+          F('text', { name: 'country', label: 'Country', required: true }),
+          F('text', { name: 'city', label: 'City' }),
+          F('select', { name: 'promotionType', label: 'Promotion Type', required: true, options: ['PR Campaign','Media Coverage','Digital Media Promotion','Social Media Campaign','Artist Feature','Nasheed / Project Promotion','Press Release & Media Outreach','Interview Promotion','Brand / Campaign Promotion','Custom PR & Media Package'] }),
+          F('text', { name: 'campaignName', label: 'Campaign / Project Name' }),
+          F('textarea', { name: 'campaignDescription', label: 'Campaign Description', full: true, required: true }),
+          F('text', { name: 'targetAudience', label: 'Target Audience' }),
+          F('text', { name: 'platforms', label: 'Preferred Platforms' }),
+          F('text', { name: 'duration', label: 'Campaign Duration' }),
+          F('text', { name: 'timeline', label: 'Proposed Timeline' }),
+          F('text', { name: 'budget', label: 'Budget Range (Optional)' }),
+          F('url', { name: 'link', label: 'Website / Social Media Link' }),
+          F('textarea', { name: 'additional', label: 'Additional Requirements', full: true }),
+        ],
+      },
+      {
+        id: 'press',
+        label: 'Press, Interview & Media Request',
+        intro: 'For TV, newspaper, magazine, podcast, digital publication, Islamic media, YouTube interviews and documentary/feature requests.',
+        fields: [
+          F('text', { name: 'fullName', label: 'Full Name', required: true }),
+          F('text', { name: 'mediaOrg', label: 'Media Organization', required: true }),
+          F('text', { name: 'position', label: 'Position / Role' }),
+          F('email', { name: 'email', label: 'Email', required: true }),
+          F('tel', { name: 'whatsapp', label: 'Phone / WhatsApp', required: true }),
+          F('text', { name: 'country', label: 'Country', required: true }),
+          F('text', { name: 'city', label: 'City' }),
+          F('select', { name: 'mediaType', label: 'Media Type', required: true, options: ['TV','Newspaper','Magazine','Podcast','Digital Publication','Islamic Media','YouTube Interview','Documentary / Feature','Other'] }),
+          F('select', { name: 'requestType', label: 'Request Type', options: ['Interview','Feature','Quote / Statement','Coverage','Other'] }),
+          F('text', { name: 'topic', label: 'Interview / Feature Topic', full: true }),
+          F('date', { name: 'preferredDate', label: 'Preferred Date' }),
+          F('date', { name: 'publishDate', label: 'Publication / Broadcast Date' }),
+          F('url', { name: 'mediaLink', label: 'Media Website / Link' }),
+          F('textarea', { name: 'details', label: 'Request Details', full: true, required: true }),
+        ],
+      },
+      {
+        id: 'video',
+        label: 'Video & Creative Collaboration',
+        intro: 'For meaningful Islamic/Nasheed-related creative video projects — music videos, documentaries, short films and animated/kids content.',
+        fields: [
+          F('text', { name: 'fullName', label: 'Full Name', required: true }),
+          F('text', { name: 'org', label: 'Organization' }),
+          F('email', { name: 'email', label: 'Email', required: true }),
+          F('tel', { name: 'whatsapp', label: 'WhatsApp', required: true }),
+          F('text', { name: 'country', label: 'Country', required: true }),
+          F('select', { name: 'projectType', label: 'Project Type', required: true, options: ['Music Video','Nasheed Video','Documentary','Short Film','Animation / Kids Content','Digital Content','Other'] }),
+          F('text', { name: 'projectTitle', label: 'Project Title' }),
+          F('textarea', { name: 'projectDescription', label: 'Project Description', full: true, required: true }),
+          F('text', { name: 'proposedRole', label: "Hiba's Proposed Role" }),
+          F('text', { name: 'location', label: 'Location' }),
+          F('text', { name: 'timeline', label: 'Proposed Date / Timeline' }),
+          F('url', { name: 'reference', label: 'Reference / Portfolio Link' }),
+          F('textarea', { name: 'additional', label: 'Additional Details', full: true }),
+        ],
+      },
+      {
+        id: 'private',
+        label: 'Private Contact & One-to-One Request',
+        intro: 'For direct calls, video calls, one-to-one meetings, professional consultations and special requests.',
+        notice: "For Hiba's privacy and safety, personal meetings and direct communication are arranged only through authorized management and are subject to availability and approval. A parent/guardian or authorized management representative may be required to be present for in-person meetings.\n\nSubmitting this form is a request only and does not guarantee a meeting or direct call.",
+        fields: [
+          F('text', { name: 'fullName', label: 'Full Name', required: true }),
+          F('text', { name: 'country', label: 'Country', required: true }),
+          F('text', { name: 'city', label: 'City' }),
+          F('email', { name: 'email', label: 'Email', required: true }),
+          F('tel', { name: 'whatsapp', label: 'WhatsApp / Phone', required: true }),
+          F('select', { name: 'preferredMethod', label: 'Preferred Contact Method', required: true, options: ['Direct Phone Call','WhatsApp Call','Video Call','One-to-One Meeting','Professional Consultation','Special Request'] }),
+          F('date', { name: 'preferredDate', label: 'Preferred Date' }),
+          F('time', { name: 'preferredTime', label: 'Preferred Time' }),
+          F('text', { name: 'purpose', label: 'Purpose of Request', required: true }),
+          F('textarea', { name: 'reason', label: 'Reason for Request', full: true }),
+          F('textarea', { name: 'additional', label: 'Additional Message', full: true }),
+          F('text', { name: 'meetingCity', label: 'Meeting City', showIf: { field: 'preferredMethod', equals: 'One-to-One Meeting' } }),
+          F('date', { name: 'meetingDate', label: 'Preferred Meeting Date', showIf: { field: 'preferredMethod', equals: 'One-to-One Meeting' } }),
+          F('number', { name: 'attendeeCount', label: 'Number of People Attending', showIf: { field: 'preferredMethod', equals: 'One-to-One Meeting' } }),
+          F('text', { name: 'representative', label: 'Name / Relationship of Accompanying Person or Authorized Representative', full: true, showIf: { field: 'preferredMethod', equals: 'One-to-One Meeting' } }),
+        ],
+      },
+      {
+        id: 'licensing',
+        label: 'Music Licensing & Usage',
+        intro: "For educational use, Islamic media, documentaries, film/video projects, digital content and other approved usage of Hiba's Nasheed / Naat / Islamic music catalogue.",
+        notice: "Licensing approval, terms and applicable fees are subject to review and written authorization by the official management.",
+        fields: [
+          F('text', { name: 'fullName', label: 'Full Name', required: true }),
+          F('text', { name: 'org', label: 'Organization' }),
+          F('email', { name: 'email', label: 'Email', required: true }),
+          F('tel', { name: 'whatsapp', label: 'WhatsApp', required: true }),
+          F('text', { name: 'country', label: 'Country', required: true }),
+          F('text', { name: 'projectName', label: 'Project Name' }),
+          F('text', { name: 'trackName', label: 'Track / Nasheed Name', required: true }),
+          F('select', { name: 'intendedUse', label: 'Intended Use', required: true, options: ['Educational Use','Islamic Media','Documentary','Film / Video Project','Digital Content','Commercial Use','Other Approved Usage'] }),
+          F('text', { name: 'platform', label: 'Platform' }),
+          F('text', { name: 'territory', label: 'Territory / Countries' }),
+          F('text', { name: 'usageDuration', label: 'Usage Duration' }),
+          F('date', { name: 'publicationDate', label: 'Project / Publication Date' }),
+          F('textarea', { name: 'projectDescription', label: 'Project Description', full: true, required: true }),
+          F('url', { name: 'reference', label: 'Reference Link' }),
+          F('textarea', { name: 'additional', label: 'Additional Requirements', full: true }),
+        ],
+      },
+      {
+        id: 'general',
+        label: 'General Inquiry',
+        intro: 'For anything that does not fit the categories above.',
+        fields: [
+          F('text', { name: 'fullName', label: 'Full Name', required: true }),
+          F('email', { name: 'email', label: 'Email', required: true }),
+          F('tel', { name: 'whatsapp', label: 'WhatsApp / Phone' }),
+          F('text', { name: 'country', label: 'Country' }),
+          F('text', { name: 'subject', label: 'Subject', required: true }),
+          F('textarea', { name: 'message', label: 'Message', full: true, required: true }),
+        ],
+      },
+    ];
+
+    const categoriesEl = document.getElementById('contactCategories');
+    const panelEl = document.getElementById('contactFormPanel');
+    const fieldsEl = document.getElementById('contactFields');
+    const formTitleEl = document.getElementById('contactFormTitle');
+    const formIntroEl = document.getElementById('contactFormIntro');
+    const formNoticeEl = document.getElementById('contactFormNotice');
+    const formEl = document.getElementById('contactForm');
+    const confirmationEl = document.getElementById('contactConfirmation');
+    const backBtn = document.getElementById('contactBack');
+    const resetBtn = document.getElementById('contactReset');
+    if(!categoriesEl) return; // Contact section not present on this page
+
+    categoriesEl.innerHTML = CONTACT_CATEGORIES.map((cat, i) => `
+      <button type="button" class="contact-category-btn" data-cat="${cat.id}">
+        <span class="num">${String(i+1).padStart(2,'0')}</span>
+        <span class="label">${cat.label}</span>
+      </button>`).join('');
+
+    function fieldHTML(cat, f){
+      const reqAttr = f.required ? 'required' : '';
+      const reqMark = f.required ? ' <span class="req">*</span>' : '';
+      const showIfAttr = f.showIf ? ` data-show-if-field="${f.showIf.field}" data-show-if-equals="${f.showIf.equals}"` : '';
+      let control;
+      if(f.type === 'select'){
+        control = `<select name="${f.name}" ${reqAttr}><option value="">Select…</option>${f.options.map(o=>`<option value="${o}">${o}</option>`).join('')}</select>`;
+      } else if(f.type === 'textarea'){
+        control = `<textarea name="${f.name}" ${reqAttr}></textarea>`;
+      } else {
+        control = `<input type="${f.type}" name="${f.name}" ${reqAttr}>`;
+      }
+      return `<div class="contact-field${f.full ? ' full' : ''}"${showIfAttr} ${f.showIf ? 'hidden' : ''}>
+        <label>${f.label}${reqMark}</label>
+        ${control}
+        <span class="err">This field is required.</span>
+      </div>`;
+    }
+
+    let activeCategory = null;
+
+    function openCategory(id){
+      const cat = CONTACT_CATEGORIES.find(c => c.id === id);
+      if(!cat) return;
+      activeCategory = cat;
+      formTitleEl.textContent = cat.label;
+      formIntroEl.textContent = cat.intro || '';
+      if(cat.notice){
+        formNoticeEl.textContent = cat.notice;
+        formNoticeEl.hidden = false;
+      } else {
+        formNoticeEl.hidden = true;
+      }
+      fieldsEl.innerHTML = cat.fields.map(f => fieldHTML(cat, f)).join('');
+      formEl.reset();
+      categoriesEl.hidden = true;
+      confirmationEl.hidden = true;
+      panelEl.hidden = false;
+      panelEl.scrollIntoView({ behavior:'smooth', block:'start' });
+
+      // conditional fields
+      fieldsEl.querySelectorAll('[data-show-if-field]').forEach(wrap => {
+        const trigger = fieldsEl.querySelector(`[name="${wrap.dataset.showIfField}"]`);
+        if(!trigger) return;
+        const update = () => {
+          const show = trigger.value === wrap.dataset.showIfEquals;
+          wrap.hidden = !show;
+          const ctrl = wrap.querySelector('input,select,textarea');
+          if(ctrl) ctrl.required = show && cat.fields.find(f=>f.name===wrap.querySelector('input,select,textarea').name)?.required !== false;
+        };
+        trigger.addEventListener('change', update);
+        update();
+      });
+    }
+
+    categoriesEl.addEventListener('click', (e) => {
+      const btn = e.target.closest('.contact-category-btn');
+      if(btn) openCategory(btn.dataset.cat);
+    });
+
+    backBtn.addEventListener('click', () => {
+      panelEl.hidden = true;
+      categoriesEl.hidden = false;
+    });
+
+    resetBtn.addEventListener('click', () => {
+      confirmationEl.hidden = true;
+      categoriesEl.hidden = false;
+    });
+
+    const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    const PHONE_RE = /^[0-9+\-\s()]{7,}$/;
+
+    formEl.addEventListener('submit', (e) => {
+      e.preventDefault();
+      if(!activeCategory) return;
+
+      // honeypot: silently pretend success without sending
+      const honeypot = document.getElementById('contactHoneypot');
+      if(honeypot && honeypot.value){
+        panelEl.hidden = true;
+        confirmationEl.hidden = false;
+        confirmationEl.scrollIntoView({ behavior:'smooth', block:'start' });
+        return;
+      }
+
+      let valid = true;
+      const lines = [`Inquiry Category: ${activeCategory.label}`, ''];
+
+      fieldsEl.querySelectorAll('.contact-field').forEach(wrap => {
+        if(wrap.hidden) { wrap.classList.remove('has-error'); return; }
+        const ctrl = wrap.querySelector('input,select,textarea');
+        if(!ctrl) return;
+        const value = ctrl.value.trim();
+        let fieldValid = true;
+        if(ctrl.required && !value) fieldValid = false;
+        if(value && ctrl.type === 'email' && !EMAIL_RE.test(value)) fieldValid = false;
+        if(value && ctrl.type === 'tel' && !PHONE_RE.test(value)) fieldValid = false;
+        wrap.classList.toggle('has-error', !fieldValid);
+        ctrl.classList.toggle('invalid', !fieldValid);
+        if(!fieldValid) valid = false;
+        if(value) lines.push(`${wrap.querySelector('label').textContent.replace('*','').trim()}: ${value}`);
+      });
+
+      if(!valid){
+        const firstError = fieldsEl.querySelector('.has-error');
+        if(firstError) firstError.scrollIntoView({ behavior:'smooth', block:'center' });
+        return;
+      }
+
+      const subject = encodeURIComponent(`New Inquiry: ${activeCategory.label}`);
+      const body = encodeURIComponent(lines.join('\n'));
+      window.location.href = `mailto:${RECIPIENT}?subject=${subject}&body=${body}`;
+
+      panelEl.hidden = true;
+      confirmationEl.hidden = false;
+      confirmationEl.scrollIntoView({ behavior:'smooth', block:'start' });
+    });
   })();
 </script>
 </body>
