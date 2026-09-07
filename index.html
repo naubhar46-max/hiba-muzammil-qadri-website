@@ -460,11 +460,28 @@
   .coming-soon-strip:hover{box-shadow:16px 22px -16px rgba(60,38,20,.28); border-color:var(--gold);}
   .coming-soon-strip img{width:120px; height:150px; object-fit:cover; border-radius:10px; flex-shrink:0; box-shadow:var(--shadow-sm); transition:transform .5s ease;}
   .coming-soon-strip:hover img{transform:scale(1.04);}
-  .coming-soon-strip .txt .badge{
-    display:inline-block; background:var(--burgundy); color:var(--ivory); font-size:.72rem; padding:4px 12px;
-    border-radius:14px; margin-bottom:10px;
+  .badge{
+    display:inline-block; background:var(--burgundy); color:var(--ivory); font-size:.7rem; padding:5px 14px;
+    border-radius:14px; margin-bottom:12px; letter-spacing:.06em; text-transform:uppercase; font-weight:500;
   }
   .coming-soon-strip .txt h4{font-size:1.3rem; color:var(--emerald-deep);}
+  .empty-state-premium{
+    text-align:center; max-width:520px; margin:20px auto 0; padding:52px 32px;
+    border:1px solid rgba(174,132,52,.32); border-radius:var(--radius); background:var(--ivory);
+    box-shadow:var(--shadow-sm); position:relative; overflow:hidden;
+  }
+  .empty-state-premium::before{
+    content:""; position:absolute; top:-90px; left:50%; transform:translateX(-50%);
+    width:240px; height:240px; border-radius:50%; pointer-events:none;
+    background:radial-gradient(circle, rgba(216,185,107,.2), transparent 70%);
+  }
+  .empty-state-premium .icon-circle{
+    position:relative; z-index:1; width:64px; height:64px; border-radius:50%; margin:0 auto 18px;
+    display:flex; align-items:center; justify-content:center; background:rgba(174,132,52,.1);
+  }
+  .empty-state-premium .icon-circle svg{width:26px; height:26px;}
+  .empty-state-premium h4{position:relative; z-index:1;}
+  .empty-state-premium p{position:relative; z-index:1;}
   .coming-soon-strip .txt p{color:var(--ink-soft); margin-top:6px; font-size:.92rem;}
 
   /* ---------- GALLERY ---------- */
@@ -1146,11 +1163,14 @@
 
     <div id="langContent"></div>
 
-    <div id="multilingualEmptyState" style="text-align:center; max-width:520px; margin:0 auto; padding:56px 32px; border:1.5px dashed rgba(174,132,52,.45); border-radius:var(--radius); background:var(--pearl);">
-      <svg viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="1.3" style="width:44px; height:44px; margin:0 auto 18px; display:block;">
-        <circle cx="12" cy="12" r="9.5"/><path d="M2.5 12h19M12 2.5c2.5 2.7 4 6.2 4 9.5s-1.5 6.8-4 9.5c-2.5-2.7-4-6.2-4-9.5s1.5-6.8 4-9.5z" stroke-linecap="round"/>
-      </svg>
-      <h4 style="font-family:var(--serif); color:var(--emerald-deep); font-size:1.2rem; margin-bottom:8px;">Languages launching soon</h4>
+    <div id="multilingualEmptyState" class="empty-state-premium" data-reveal="up">
+      <span class="badge">Coming soon</span>
+      <div class="icon-circle">
+        <svg viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="1.3">
+          <circle cx="12" cy="12" r="9.5"/><path d="M2.5 12h19M12 2.5c2.5 2.7 4 6.2 4 9.5s-1.5 6.8-4 9.5c-2.5-2.7-4-6.2-4-9.5s1.5-6.8 4-9.5z" stroke-linecap="round"/>
+        </svg>
+      </div>
+      <h4 style="font-family:var(--serif); color:var(--emerald-deep); font-size:1.2rem; margin-bottom:8px;">Additional Languages Launching Soon</h4>
       <p style="color:var(--ink-soft); font-size:.9rem;">This portfolio will showcase Hiba's Nasheeds, Naats and Kalam across languages including Arabic, Urdu, English, Turkish, Persian, Bengali and more — added here as they're released.</p>
     </div>
   </div>
@@ -1184,12 +1204,15 @@
 
     <div id="audioLibraryList"></div>
 
-    <div id="audioEmptyState" style="text-align:center; max-width:480px; margin:20px auto 0; padding:56px 32px; border:1.5px dashed rgba(174,132,52,.45); border-radius:var(--radius); background:var(--ivory);">
-      <svg viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="1.3" style="width:44px; height:44px; margin:0 auto 18px; display:block;">
-        <path d="M9 18V6l11-2v12" stroke-linecap="round" stroke-linejoin="round"/>
-        <circle cx="6.5" cy="18.5" r="2.5"/><circle cx="17.5" cy="16.5" r="2.5"/>
-      </svg>
-      <h4 style="font-family:var(--serif); color:var(--emerald-deep); font-size:1.2rem; margin-bottom:8px;">Audio tracks launching soon</h4>
+    <div id="audioEmptyState" class="empty-state-premium" data-reveal="up">
+      <span class="badge">Coming soon</span>
+      <div class="icon-circle">
+        <svg viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="1.3">
+          <path d="M9 18V6l11-2v12" stroke-linecap="round" stroke-linejoin="round"/>
+          <circle cx="6.5" cy="18.5" r="2.5"/><circle cx="17.5" cy="16.5" r="2.5"/>
+        </svg>
+      </div>
+      <h4 style="font-family:var(--serif); color:var(--emerald-deep); font-size:1.2rem; margin-bottom:8px;">Audio Tracks Launching Soon</h4>
       <p style="color:var(--ink-soft); font-size:.9rem;">Standalone MP3 tracks and curated playlists will appear here, fully searchable and playable, the moment they're ready.</p>
     </div>
 
