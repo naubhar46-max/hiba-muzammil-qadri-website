@@ -537,6 +537,18 @@
   .platform-btn svg{width:26px; height:26px; color:var(--emerald-deep); transition:transform .25s ease;}
   .platform-btn:hover svg{transform:scale(1.12);}
   .platform-btn span{font-size:.8rem; color:var(--ink-soft);}
+
+  /* ---------- SOCIAL HUB (richer platform cards: identity + description + CTA) ---------- */
+  .social-hub .platform-btn{padding:30px 16px 24px; gap:12px; text-align:center;}
+  .social-hub .platform-btn span{font-family:var(--serif); font-size:.98rem; color:var(--ink); letter-spacing:.02em;}
+  .social-hub .platform-btn em{font-style:normal; font-size:.74rem; line-height:1.4; color:var(--ink-soft); opacity:.85;}
+  .social-hub .platform-btn b{
+    font-weight:500; font-size:.72rem; color:var(--gold); text-transform:uppercase; letter-spacing:.08em;
+    display:inline-flex; align-items:center; gap:5px; margin-top:4px; opacity:0; transform:translateY(2px);
+    transition:opacity .25s ease, transform .25s ease;
+  }
+  .social-hub .platform-btn b svg{width:11px; height:11px; color:var(--gold);}
+  .social-hub .platform-btn:hover b{opacity:1; transform:translateY(0);}
   [data-reveal="stagger"]{opacity:1; transform:none;}
   [data-reveal="stagger"] > *{opacity:0; transform:translateY(22px); transition:opacity .6s cubic-bezier(.2,.8,.2,1), transform .6s cubic-bezier(.2,.8,.2,1);}
   [data-reveal="stagger"].in-view > *{opacity:1; transform:translateY(0);}
@@ -1458,26 +1470,36 @@
       <p>Every official account, one place. Facebook is embedded directly below.</p>
     </div>
 
-    <div class="pl-social-grid" data-reveal="stagger" style="display:grid; grid-template-columns:repeat(5,1fr); gap:18px; max-width:960px; margin:0 auto 48px;">
-      <a class="platform-btn" data-social="youtube" href="https://www.youtube.com/@HibaMuzammilQadriiofficial" target="_blank" rel="noopener" style="padding:28px 12px;">
+    <div class="pl-social-grid social-hub" data-reveal="stagger" style="display:grid; grid-template-columns:repeat(5,1fr); gap:18px; max-width:1080px; margin:0 auto 48px;">
+      <a class="platform-btn" data-social="youtube" href="https://www.youtube.com/@HibaMuzammilQadriiofficial" target="_blank" rel="noopener">
         <svg viewBox="0 0 24 24" fill="currentColor" style="width:28px; height:28px;"><rect x="2.5" y="5.5" width="19" height="13" rx="4"/><path d="M10.5 9.3v5.4l5-2.7z" fill="var(--ivory,#fff)"/></svg>
         <span>YouTube</span>
+        <em>Nasheeds, Naats &amp; official videos</em>
+        <b>Visit channel <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M9 7h8v8" stroke-linecap="round" stroke-linejoin="round"/></svg></b>
       </a>
-      <a class="platform-btn" data-social="instagram" href="https://www.instagram.com/hibamuzammilqadri/" target="_blank" rel="noopener" style="padding:28px 12px;">
+      <a class="platform-btn" data-social="instagram" href="https://www.instagram.com/hibamuzammilqadri/" target="_blank" rel="noopener">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" style="width:28px; height:28px;"><rect x="3.5" y="3.5" width="17" height="17" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="1.1" fill="currentColor" stroke="none"/></svg>
         <span>Instagram</span>
+        <em>Behind the scenes &amp; updates</em>
+        <b>Visit profile <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M9 7h8v8" stroke-linecap="round" stroke-linejoin="round"/></svg></b>
       </a>
-      <a class="platform-btn" data-social="facebook" href="https://www.facebook.com/HIBAMUZAMMILQADRI/" target="_blank" rel="noopener" style="padding:28px 12px;">
+      <a class="platform-btn" data-social="facebook" href="https://www.facebook.com/HIBAMUZAMMILQADRI/" target="_blank" rel="noopener">
         <svg viewBox="0 0 24 24" fill="currentColor" style="width:28px; height:28px;"><circle cx="12" cy="12" r="9.5" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M13.8 8.6h1.7V6.2h-1.9c-2 0-2.9 1.1-2.9 2.9v1.4H9.3v2.4h1.4V18h2.4v-5.1h1.7l.3-2.4h-2V9c0-.5.2-.4.7-.4z"/></svg>
         <span>Facebook</span>
+        <em>Official page &amp; announcements</em>
+        <b>Visit page <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M9 7h8v8" stroke-linecap="round" stroke-linejoin="round"/></svg></b>
       </a>
-      <a class="platform-btn" data-social="tiktok" href="https://www.tiktok.com/@hibamuzammilqadrii" target="_blank" rel="noopener" style="padding:28px 12px;">
+      <a class="platform-btn" data-social="tiktok" href="https://www.tiktok.com/@hibamuzammilqadrii" target="_blank" rel="noopener">
         <svg viewBox="0 0 24 24" fill="currentColor" style="width:28px; height:28px;"><path d="M14 3.5c.5 1.8 1.7 3 3.6 3.2v2.4c-1.3 0-2.5-.4-3.6-1.2v6.1a4.6 4.6 0 1 1-4.6-4.6c.2 0 .5 0 .7.1v2.4a2.2 2.2 0 1 0 1.6 2.1V3.5z"/></svg>
         <span>TikTok</span>
+        <em>Short clips &amp; moments</em>
+        <b>Visit profile <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M9 7h8v8" stroke-linecap="round" stroke-linejoin="round"/></svg></b>
       </a>
-      <a class="platform-btn" data-social="threads" href="https://www.threads.com/@hibamuzammilqadri" target="_blank" rel="noopener" style="padding:28px 12px;">
+      <a class="platform-btn" data-social="threads" href="https://www.threads.com/@hibamuzammilqadri" target="_blank" rel="noopener">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" style="width:28px; height:28px;"><circle cx="12" cy="12" r="9.5"/><text x="12" y="16.2" font-size="11" text-anchor="middle" fill="currentColor" stroke="none" font-family="sans-serif">@</text></svg>
         <span>Threads</span>
+        <em>Thoughts &amp; conversations</em>
+        <b>Visit profile <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M9 7h8v8" stroke-linecap="round" stroke-linejoin="round"/></svg></b>
       </a>
     </div>
 
