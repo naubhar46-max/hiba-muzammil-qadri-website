@@ -167,7 +167,7 @@
   .mini-icons a:hover{background:var(--gold); color:var(--ivory); transform:translateY(-2px);}
   .mini-icons svg{width:17px; height:17px;}
 
-  .hero-portrait-wrap{position:relative; display:flex; justify-content:center;}
+  .hero-portrait-wrap{position:relative; display:flex; justify-content:center; transition:transform .2s ease-out; transform-style:preserve-3d; will-change:transform;}
   .hero-portrait-wrap::before{
     content:""; position:absolute; top:10%; left:50%; transform:translateX(-50%);
     width:70%; aspect-ratio:1/1; border-radius:50%;
@@ -1619,6 +1619,30 @@
     mainNav.classList.remove('open');
     menuToggle.setAttribute('aria-expanded', false);
   }));
+
+  // hero portrait: a very subtle real 3D tilt that follows the mouse —
+  // desktop/mouse only (skipped on touch devices) and respects
+  // prefers-reduced-motion. Purely decorative; never affects layout.
+  (function heroTilt(){
+    const heroEl = document.querySelector('.hero');
+    const portraitWrap = document.querySelector('.hero-portrait-wrap');
+    if(!heroEl || !portraitWrap) return;
+    const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const hasHover = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+    if(prefersReduced || !hasHover) return;
+
+    heroEl.addEventListener('mousemove', (e) => {
+      const rect = heroEl.getBoundingClientRect();
+      const x = (e.clientX - rect.left) / rect.width - 0.5;
+      const y = (e.clientY - rect.top) / rect.height - 0.5;
+      const rotateY = x * 8;
+      const rotateX = -y * 8;
+      portraitWrap.style.transform = `perspective(900px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+    });
+    heroEl.addEventListener('mouseleave', () => {
+      portraitWrap.style.transform = '';
+    });
+  })();
 
   // nav: solid/elevated state once the page has scrolled
   const siteNav = document.querySelector('header.site-nav');
