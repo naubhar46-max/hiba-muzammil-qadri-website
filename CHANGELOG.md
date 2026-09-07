@@ -2,6 +2,18 @@
 
 All notable changes to this project are recorded here, most recent first.
 
+## [v2.0.1] — Copy audit: age-repetition & real playlist titles
+
+Full front-end audit against a "$50k luxury site" checklist found the
+design/UX/embeds/accessibility/performance already solid from v2.0.0. Two
+genuine content issues were fixed:
+
+- The "At just 13 / At 13" framing appeared three times across About and
+  Multilingual — reduced to a single, strategic mention.
+- The five "Her Playlists" cards showed generic "Playlist 1–5" labels;
+  replaced with each playlist's real YouTube title (shortened, not
+  invented — verified live against youtube.com/playlist).
+
 ## [v2.0.0] — Sanity CMS, live deployment, visual upgrade & Contact/Inquiry system
 
 Everything since the v1.0.0 baseline:
