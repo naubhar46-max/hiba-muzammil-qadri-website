@@ -7,24 +7,27 @@ export default defineType({
   fields: [
     defineField({
       name: 'image',
-      title: 'Image',
+      title: 'Photo',
       type: 'image',
+      description: 'Best size: at least 900px on the shorter side.',
       options: {hotspot: true},
-      validation: (Rule) => Rule.required(),
+      validation: (Rule) => Rule.required().error('Please choose a photo.'),
     }),
     defineField({
       name: 'caption',
       title: 'Caption',
       type: 'string',
+      description: 'A short line describing this photo — shown under it.',
     }),
     defineField({
       name: 'category',
       title: 'Category',
       type: 'string',
+      description: 'Optional — a short label like "Performance" or "Behind the Scenes".',
     }),
     defineField({
       name: 'relatedProject',
-      title: 'Related Project',
+      title: 'Related Album (optional)',
       type: 'reference',
       to: [{type: 'project'}],
     }),
@@ -32,6 +35,7 @@ export default defineType({
       name: 'order',
       title: 'Display Order',
       type: 'number',
+      description: 'Lower numbers appear first. Leave blank for default order.',
     }),
   ],
   orderings: [

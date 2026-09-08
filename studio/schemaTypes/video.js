@@ -1,5 +1,10 @@
 import {defineField, defineType} from 'sanity'
 
+function isYouTubeUrl(url) {
+  if (!url) return true
+  return /^https?:\/\/(www\.)?(youtube\.com|youtu\.be)\//.test(url)
+}
+
 export default defineType({
   name: 'video',
   title: 'Video',
@@ -9,7 +14,26 @@ export default defineType({
       name: 'title',
       title: 'Title',
       type: 'string',
-      validation: (Rule) => Rule.required(),
+      validation: (Rule) => Rule.required().error('Please give this video a title.'),
+    }),
+    defineField({
+      name: 'youtubeUrl',
+      title: 'YouTube Link',
+      type: 'url',
+      description: 'Paste the full YouTube video link. The thumbnail is picked up automatically.',
+      validation: (Rule) =>
+        Rule.required()
+          .error('Please paste a YouTube link.')
+          .custom((value) =>
+            isYouTubeUrl(value) ? true : 'This does not look like a YouTube link. Please paste the full YouTube video URL.',
+          ),
+    }),
+    defineField({
+      name: 'thumbnail',
+      title: 'Thumbnail (optional)',
+      type: 'image',
+      description: 'Leave blank to use YouTube’s own thumbnail automatically.',
+      options: {hotspot: true},
     }),
     defineField({
       name: 'type',
@@ -24,33 +48,22 @@ export default defineType({
       },
     }),
     defineField({
-      name: 'youtubeUrl',
-      title: 'YouTube URL',
-      type: 'url',
-      validation: (Rule) => Rule.required(),
-    }),
-    defineField({
-      name: 'thumbnail',
-      title: 'Thumbnail',
-      type: 'image',
-      options: {hotspot: true},
-    }),
-    defineField({
       name: 'relatedMusicItem',
-      title: 'Related Music Item',
+      title: 'Related Song (optional)',
       type: 'reference',
       to: [{type: 'musicItem'}],
     }),
     defineField({
       name: 'featured',
-      title: 'Featured',
+      title: 'Feature this on the homepage?',
       type: 'boolean',
       initialValue: false,
     }),
     defineField({
       name: 'published',
-      title: 'Published (visible on site)',
+      title: 'Show on Website',
       type: 'boolean',
+      description: 'Turn this off to hide the video without deleting it.',
       initialValue: true,
     }),
   ],

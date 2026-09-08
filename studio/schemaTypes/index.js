@@ -7,6 +7,10 @@ import socialLink from './socialLink'
 import musicPlatformLink from './musicPlatformLink'
 import siteSettings from './siteSettings'
 import inquiry from './inquiry'
+import playlist from './playlist'
+import event from './event'
+import newsPost from './newsPost'
+import collaboration from './collaboration'
 
 export const schemaTypes = [
   language,
@@ -18,4 +22,8 @@ export const schemaTypes = [
   musicPlatformLink,
   siteSettings,
   inquiry,
+  playlist,
+  event,
+  newsPost,
+  collaboration,
 ]

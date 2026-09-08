@@ -2,18 +2,25 @@ import {defineField, defineType} from 'sanity'
 
 export default defineType({
   name: 'project',
-  title: 'Project / Album',
+  title: 'Album',
   type: 'document',
+  fieldsets: [
+    {
+      name: 'advanced',
+      title: 'Google Search Information (Advanced)',
+      options: {collapsible: true, collapsed: true},
+    },
+  ],
   fields: [
     defineField({
       name: 'title',
-      title: 'Title',
+      title: 'Album Name',
       type: 'string',
-      validation: (Rule) => Rule.required(),
+      validation: (Rule) => Rule.required().error('Please give this album a name.'),
     }),
     defineField({
       name: 'coverArtwork',
-      title: 'Cover Artwork',
+      title: 'Cover Picture',
       type: 'image',
       options: {hotspot: true},
     }),
@@ -29,13 +36,17 @@ export default defineType({
     }),
     defineField({
       name: 'seoTitle',
-      title: 'SEO Title',
+      title: 'Google Search Title',
       type: 'string',
+      description: 'The headline shown in Google search results. Leave blank to use the album name.',
+      fieldset: 'advanced',
     }),
     defineField({
       name: 'seoDescription',
-      title: 'SEO Description',
+      title: 'Google Search Description',
       type: 'text',
+      description: 'The short summary shown under the title in Google search results.',
+      fieldset: 'advanced',
     }),
   ],
   preview: {
