@@ -297,7 +297,7 @@
     border-radius:var(--radius); overflow:hidden; box-shadow:var(--shadow);
     border:8px solid var(--ivory); outline:1.5px solid rgba(174,132,52,.5);
   }
-  .about-photo img{width:100%; aspect-ratio:4/5; object-fit:cover; transition:transform .8s cubic-bezier(.2,.8,.2,1);}
+  .about-photo img{width:100%; height:auto; aspect-ratio:4/5; object-fit:cover; transition:transform .8s cubic-bezier(.2,.8,.2,1);}
   .about-photo:hover img{transform:scale(1.045);}
   .about-copy .kicker{
     letter-spacing:.16em !important; text-transform:uppercase; font-style:normal !important; font-size:.82rem !important;
@@ -353,7 +353,7 @@
     content:""; position:absolute; inset:0; pointer-events:none; z-index:1;
     background:linear-gradient(180deg, rgba(10,16,14,0) 55%, rgba(10,16,14,.4) 100%);
   }
-  .spotlight-art img{width:100%; aspect-ratio:1/1; object-fit:cover; transition:transform .8s cubic-bezier(.2,.8,.2,1);}
+  .spotlight-art img{width:100%; height:auto; aspect-ratio:1/1; object-fit:cover; transition:transform .8s cubic-bezier(.2,.8,.2,1);}
   .spotlight-art:hover img{transform:scale(1.05);}
   .spotlight-art iframe{width:100%; aspect-ratio:1/1; border:0; display:block;}
   .inline-embed{position:relative; cursor:pointer;}
@@ -515,7 +515,7 @@
   .gallery-grid.in-view figure:nth-child(4){transition-delay:.2s;}
   .gallery-grid.in-view figure:nth-child(5){transition-delay:.26s;}
   .gallery-grid figure:hover{box-shadow:20px 26px -16px rgba(60,38,20,.32);}
-  .gallery-grid img{width:100%; aspect-ratio:4/5; object-fit:cover; transition:transform .6s cubic-bezier(.2,.8,.2,1);}
+  .gallery-grid img{width:100%; height:auto; aspect-ratio:4/5; object-fit:cover; transition:transform .6s cubic-bezier(.2,.8,.2,1);}
   .gallery-grid figure:nth-child(1){border-bottom:4px solid var(--emerald);}
   .gallery-grid figure:nth-child(2){border-bottom:4px solid var(--burgundy);}
   .gallery-grid figure:nth-child(3){border-bottom:4px solid var(--gold);}
@@ -1443,15 +1443,15 @@
       <h3>On YouTube</h3>
       <div class="pl-yt-grid" data-reveal="stagger" style="display:grid; grid-template-columns:repeat(4,1fr); gap:20px;">
         <div class="inline-embed" id="embedPL1" onclick="loadInlineEmbed('embedPL1','iIHwZzW6wIU')" style="border-radius:12px; overflow:hidden; box-shadow:var(--shadow-sm); border:1px solid rgba(174,132,52,.3);">
-          <picture><source srcset="images/al-eid-takbirat.webp" type="image/webp"><img loading="lazy" src="images/al-eid-takbirat.jpg" alt="Al-Eid Takbirat" style="width:100%; aspect-ratio:6/5; object-fit:cover;" width="560" height="560"></picture>
+          <picture><source srcset="images/al-eid-takbirat.webp" type="image/webp"><img loading="lazy" src="images/al-eid-takbirat.jpg" alt="Al-Eid Takbirat" style="width:100%; height:auto; aspect-ratio:6/5; object-fit:cover;" width="560" height="560"></picture>
           <div class="inline-play-overlay"><div class="inline-play-btn" style="width:48px; height:48px;"><svg viewBox="0 0 24 24" fill="currentColor" style="width:18px; height:18px;"><path d="M8 5v14l11-7z"/></svg></div></div>
         </div>
         <div class="inline-embed" id="embedPL2" onclick="loadInlineEmbed('embedPL2','szyVM4KlaH8')" style="border-radius:12px; overflow:hidden; box-shadow:var(--shadow-sm); border:1px solid rgba(174,132,52,.3);">
-          <picture><source srcset="images/mera-nabi-sultan.webp" type="image/webp"><img loading="lazy" src="images/mera-nabi-sultan.jpg" alt="Mera Nabi Sultan" style="width:100%; aspect-ratio:6/5; object-fit:cover;" width="560" height="560"></picture>
+          <picture><source srcset="images/mera-nabi-sultan.webp" type="image/webp"><img loading="lazy" src="images/mera-nabi-sultan.jpg" alt="Mera Nabi Sultan" style="width:100%; height:auto; aspect-ratio:6/5; object-fit:cover;" width="560" height="560"></picture>
           <div class="inline-play-overlay"><div class="inline-play-btn" style="width:48px; height:48px;"><svg viewBox="0 0 24 24" fill="currentColor" style="width:18px; height:18px;"><path d="M8 5v14l11-7z"/></svg></div></div>
         </div>
         <div class="inline-embed" id="embedPL3" onclick="loadInlineEmbed('embedPL3','EAi-BJWiAKI')" style="border-radius:12px; overflow:hidden; box-shadow:var(--shadow-sm); border:1px solid rgba(174,132,52,.3);">
-          <picture><source srcset="images/madina-wara-sawariya.webp" type="image/webp"><img loading="lazy" src="images/madina-wara-sawariya.jpg" alt="Madina Wara Sawariya" style="width:100%; aspect-ratio:6/5; object-fit:cover;" width="560" height="560"></picture>
+          <picture><source srcset="images/madina-wara-sawariya.webp" type="image/webp"><img loading="lazy" src="images/madina-wara-sawariya.jpg" alt="Madina Wara Sawariya" style="width:100%; height:auto; aspect-ratio:6/5; object-fit:cover;" width="560" height="560"></picture>
           <div class="inline-play-overlay"><div class="inline-play-btn" style="width:48px; height:48px;"><svg viewBox="0 0 24 24" fill="currentColor" style="width:18px; height:18px;"><path d="M8 5v14l11-7z"/></svg></div></div>
         </div>
         <div class="inline-embed" id="embedPL4" onclick="loadInlineEmbed('embedPL4','pFB1GRlQbUM')" style="border-radius:12px; overflow:hidden; box-shadow:var(--shadow-sm); border:1px solid rgba(174,132,52,.3); background:linear-gradient(155deg, var(--burgundy), var(--plum) 60%, var(--emerald-deep)); display:flex; align-items:center; justify-content:center; aspect-ratio:6/5; position:relative;">
