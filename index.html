@@ -34,7 +34,9 @@
 <link rel="icon" href="images/favicon.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=Jost:wght@300;400;500;600&display=swap">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+<noscript><link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet"></noscript>
 <style>
   :root{
     --ivory:#FBF6EC;
@@ -861,7 +863,7 @@
     <div class="hero-portrait-wrap">
       <div class="arch-frame">
         <div class="inner">
-          <img src="images/portrait-of-hiba-muzammil-qadri.jpg" alt="Portrait of Hiba Muzammil Qadri" loading="eager" fetchpriority="high">
+          <img src="images/portrait-of-hiba-muzammil-qadri.jpg" alt="Portrait of Hiba Muzammil Qadri" loading="eager" fetchpriority="high" width="900" height="1125">
         </div>
         <div class="hero-badge">Pakistani nasheed artist</div>
       </div>
@@ -874,7 +876,7 @@
   <div class="wrap about-grid">
     <div class="about-photo" data-reveal="left">
       <div class="frame">
-        <img src="images/portrait-of-hiba-muzammil-qadri-2.jpg" alt="Hiba Muzammil Qadri performing" loading="lazy">
+        <img src="images/portrait-of-hiba-muzammil-qadri-2.jpg" alt="Hiba Muzammil Qadri performing" loading="lazy" width="760" height="950">
       </div>
     </div>
     <div class="about-copy" data-reveal="right">
@@ -902,7 +904,7 @@
   </div>
   <div class="wrap spotlight-grid">
     <div class="spotlight-art" data-reveal="left" id="embedAllahMereAllah" onclick="loadInlineEmbed('embedAllahMereAllah','TSodCTTvxHs')">
-      <img src="images/allah-mere-allah-official-cover-art.jpg" alt="Allah Mere Allah — official cover art" loading="lazy">
+      <img src="images/allah-mere-allah-official-cover-art.jpg" alt="Allah Mere Allah — official cover art" loading="lazy" width="1000" height="1000">
       <div class="inline-play-overlay"><div class="inline-play-btn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></div></div>
     </div>
     <div class="spotlight-copy" data-reveal="right">
@@ -954,7 +956,7 @@
         </div>
       </div>
       <!-- Cards injected below -->
-      <div class="track-card" data-category="special" onclick="openModal(this.querySelector('img').src, 'Al-Eid Takbirat', 'Eid Special', 'Official 4K Video')"><div class="track-thumb"><img data-track-title="Al-Eid Takbirat" src="images/al-eid-takbirat-official-cover-art.jpg" alt="Al-Eid Takbirat — official cover art" loading="lazy">
+      <div class="track-card" data-category="special" onclick="openModal(this.querySelector('img').src, 'Al-Eid Takbirat', 'Eid Special', 'Official 4K Video')"><div class="track-thumb"><img data-track-title="Al-Eid Takbirat" src="images/al-eid-takbirat-official-cover-art.jpg" alt="Al-Eid Takbirat — official cover art" loading="lazy" width="560" height="560">
           <span class="track-tag">Eid Special</span>
           <span class="play-badge">
             <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
@@ -966,7 +968,7 @@
         </div>
       </div>
       
-      <div class="track-card" data-category="kalam" onclick="openModal(this.querySelector('img').src, 'Namaz', 'Kalam', 'Devotional Kalam')"><div class="track-thumb"><img data-track-title="Namaz" src="images/namaz-official-cover-art.jpg" alt="Namaz — official cover art" loading="lazy">
+      <div class="track-card" data-category="kalam" onclick="openModal(this.querySelector('img').src, 'Namaz', 'Kalam', 'Devotional Kalam')"><div class="track-thumb"><img data-track-title="Namaz" src="images/namaz-official-cover-art.jpg" alt="Namaz — official cover art" loading="lazy" width="560" height="560">
           <span class="track-tag">Kalam</span>
           <span class="play-badge">
             <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
@@ -977,7 +979,7 @@
           <p class="meta">Devotional Kalam</p>
         </div>
       </div>
-      <div class="track-card" data-category="naat" onclick="openModal(this.querySelector('img').src, 'Aye Saba Mustafa Se Kahe Deena', 'Naat', 'Naat')"><div class="track-thumb"><img data-track-title="Aye Saba Mustafa Se Kahe Deena" src="images/aye-saba-mustafa-se-kahe-deena-official-cover-art.jpg" alt="Aye Saba Mustafa Se Kahe Deena — official cover art" loading="lazy">
+      <div class="track-card" data-category="naat" onclick="openModal(this.querySelector('img').src, 'Aye Saba Mustafa Se Kahe Deena', 'Naat', 'Naat')"><div class="track-thumb"><img data-track-title="Aye Saba Mustafa Se Kahe Deena" src="images/aye-saba-mustafa-se-kahe-deena-official-cover-art.jpg" alt="Aye Saba Mustafa Se Kahe Deena — official cover art" loading="lazy" width="560" height="560">
           <span class="track-tag">Naat</span>
           <span class="play-badge">
             <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
@@ -988,7 +990,7 @@
           <p class="meta">Naat</p>
         </div>
       </div>
-      <div class="track-card" data-category="kalam" onclick="openModal(this.querySelector('img').src, 'Assubhu Badamin', 'Kalam', 'Devotional Kalam')"><div class="track-thumb"><img data-track-title="Assubhu Badamin" src="images/assubhu-badamin-official-cover-art.jpg" alt="Assubhu Badamin — official cover art" loading="lazy">
+      <div class="track-card" data-category="kalam" onclick="openModal(this.querySelector('img').src, 'Assubhu Badamin', 'Kalam', 'Devotional Kalam')"><div class="track-thumb"><img data-track-title="Assubhu Badamin" src="images/assubhu-badamin-official-cover-art.jpg" alt="Assubhu Badamin — official cover art" loading="lazy" width="560" height="560">
           <span class="track-tag">Kalam</span>
           <span class="play-badge">
             <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
@@ -999,7 +1001,7 @@
           <p class="meta">Devotional Kalam</p>
         </div>
       </div>
-      <div class="track-card" data-category="kalam" onclick="openModal(this.querySelector('img').src, 'Hasbi Rabbi Jallallah', 'Hamd', 'Hamd')"><div class="track-thumb"><img data-track-title="Hasbi Rabbi Jallallah" src="images/hasbi-rabbi-jallallah-official-cover-art.jpg" alt="Hasbi Rabbi Jallallah — official cover art" loading="lazy">
+      <div class="track-card" data-category="kalam" onclick="openModal(this.querySelector('img').src, 'Hasbi Rabbi Jallallah', 'Hamd', 'Hamd')"><div class="track-thumb"><img data-track-title="Hasbi Rabbi Jallallah" src="images/hasbi-rabbi-jallallah-official-cover-art.jpg" alt="Hasbi Rabbi Jallallah — official cover art" loading="lazy" width="560" height="560">
           <span class="track-tag">Hamd</span>
           <span class="play-badge">
             <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
@@ -1010,7 +1012,7 @@
           <p class="meta">Hamd</p>
         </div>
       </div>
-      <div class="track-card" data-category="naat" onclick="openModal(this.querySelector('img').src, 'Pukaro Ya Rasoolallah', 'Naat', 'Naat')"><div class="track-thumb"><img data-track-title="Pukaro Ya Rasoolallah" src="images/pukaro-ya-rasoolallah-official-cover-art.jpg" alt="Pukaro Ya Rasoolallah — official cover art" loading="lazy">
+      <div class="track-card" data-category="naat" onclick="openModal(this.querySelector('img').src, 'Pukaro Ya Rasoolallah', 'Naat', 'Naat')"><div class="track-thumb"><img data-track-title="Pukaro Ya Rasoolallah" src="images/pukaro-ya-rasoolallah-official-cover-art.jpg" alt="Pukaro Ya Rasoolallah — official cover art" loading="lazy" width="560" height="560">
           <span class="track-tag">Naat</span>
           <span class="play-badge">
             <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
@@ -1021,7 +1023,7 @@
           <p class="meta">Naat</p>
         </div>
       </div>
-      <div class="track-card" data-category="special" onclick="openModal(this.querySelector('img').src, 'Lab Pe Aati Hai Dua', 'Allama Iqbal', 'Poetry by Allama Iqbal')"><div class="track-thumb"><img data-track-title="Lab Pe Aati Hai Dua" src="images/lab-pe-aati-hai-dua-official-cover-art.jpg" alt="Lab Pe Aati Hai Dua — official cover art" loading="lazy">
+      <div class="track-card" data-category="special" onclick="openModal(this.querySelector('img').src, 'Lab Pe Aati Hai Dua', 'Allama Iqbal', 'Poetry by Allama Iqbal')"><div class="track-thumb"><img data-track-title="Lab Pe Aati Hai Dua" src="images/lab-pe-aati-hai-dua-official-cover-art.jpg" alt="Lab Pe Aati Hai Dua — official cover art" loading="lazy" width="560" height="560">
           <span class="track-tag">Allama Iqbal</span>
           <span class="play-badge">
             <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
@@ -1032,7 +1034,7 @@
           <p class="meta">Poetry by Allama Iqbal</p>
         </div>
       </div>
-      <div class="track-card" data-category="kalam" onclick="openModal(this.querySelector('img').src, 'Allah Hi Allah', 'Kalam', 'Devotional Kalam')"><div class="track-thumb"><img data-track-title="Allah Hi Allah" src="images/allah-hi-allah-official-cover-art.jpg" alt="Allah Hi Allah — official cover art" loading="lazy">
+      <div class="track-card" data-category="kalam" onclick="openModal(this.querySelector('img').src, 'Allah Hi Allah', 'Kalam', 'Devotional Kalam')"><div class="track-thumb"><img data-track-title="Allah Hi Allah" src="images/allah-hi-allah-official-cover-art.jpg" alt="Allah Hi Allah — official cover art" loading="lazy" width="560" height="560">
           <span class="track-tag">Kalam</span>
           <span class="play-badge">
             <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
@@ -1043,7 +1045,7 @@
           <p class="meta">Devotional Kalam</p>
         </div>
       </div>
-      <div class="track-card" data-category="naat" onclick="openModal(this.querySelector('img').src, 'Nabiyon Mai Aala', 'Naat', 'Naat')"><div class="track-thumb"><img data-track-title="Nabiyon Mai Aala" src="images/nabiyon-mai-aala-official-cover-art.jpg" alt="Nabiyon Mai Aala — official cover art" loading="lazy">
+      <div class="track-card" data-category="naat" onclick="openModal(this.querySelector('img').src, 'Nabiyon Mai Aala', 'Naat', 'Naat')"><div class="track-thumb"><img data-track-title="Nabiyon Mai Aala" src="images/nabiyon-mai-aala-official-cover-art.jpg" alt="Nabiyon Mai Aala — official cover art" loading="lazy" width="560" height="560">
           <span class="track-tag">Naat</span>
           <span class="play-badge">
             <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
@@ -1054,7 +1056,7 @@
           <p class="meta">Naat</p>
         </div>
       </div>
-      <div class="track-card" data-category="naat" onclick="openModal(this.querySelector('img').src, 'Madina Wara Sawariya', 'Naat', 'Naat')"><div class="track-thumb"><img data-track-title="Madina Wara Sawariya" src="images/madina-wara-sawariya-official-cover-art.jpg" alt="Madina Wara Sawariya — official cover art" loading="lazy">
+      <div class="track-card" data-category="naat" onclick="openModal(this.querySelector('img').src, 'Madina Wara Sawariya', 'Naat', 'Naat')"><div class="track-thumb"><img data-track-title="Madina Wara Sawariya" src="images/madina-wara-sawariya-official-cover-art.jpg" alt="Madina Wara Sawariya — official cover art" loading="lazy" width="560" height="560">
           <span class="track-tag">Naat</span>
           <span class="play-badge">
             <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
@@ -1065,7 +1067,7 @@
           <p class="meta">Naat</p>
         </div>
       </div>
-      <div class="track-card" data-category="naat" onclick="openModal(this.querySelector('img').src, 'Naam-e-Muhammad', 'Naat', 'Heart Touching Naat · 2025')"><div class="track-thumb"><img data-track-title="Naam-e-Muhammad" src="images/naam-e-muhammad-official-cover-art.jpg" alt="Naam-e-Muhammad — official cover art" loading="lazy">
+      <div class="track-card" data-category="naat" onclick="openModal(this.querySelector('img').src, 'Naam-e-Muhammad', 'Naat', 'Heart Touching Naat · 2025')"><div class="track-thumb"><img data-track-title="Naam-e-Muhammad" src="images/naam-e-muhammad-official-cover-art.jpg" alt="Naam-e-Muhammad — official cover art" loading="lazy" width="560" height="560">
           <span class="track-tag">Naat</span>
           <span class="play-badge">
             <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
@@ -1076,7 +1078,7 @@
           <p class="meta">Heart Touching Naat · 2025</p>
         </div>
       </div>
-      <div class="track-card" data-category="special" onclick="openModal(this.querySelector('img').src, 'Allahumma Salle Ala', 'Milad Kalam', 'New Milad Kalam · 2025')"><div class="track-thumb"><img data-track-title="Allahumma Salle Ala" src="images/allahumma-salle-ala-official-cover-art.jpg" alt="Allahumma Salle Ala — official cover art" loading="lazy">
+      <div class="track-card" data-category="special" onclick="openModal(this.querySelector('img').src, 'Allahumma Salle Ala', 'Milad Kalam', 'New Milad Kalam · 2025')"><div class="track-thumb"><img data-track-title="Allahumma Salle Ala" src="images/allahumma-salle-ala-official-cover-art.jpg" alt="Allahumma Salle Ala — official cover art" loading="lazy" width="560" height="560">
           <span class="track-tag">Milad Kalam</span>
           <span class="play-badge">
             <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
@@ -1087,7 +1089,7 @@
           <p class="meta">New Milad Kalam · 2025</p>
         </div>
       </div>
-      <div class="track-card" data-category="naat" onclick="openModal(this.querySelector('img').src, 'Naatain Sarkar Ki Parhta Hoon Mein', 'Naat', 'Naat')"><div class="track-thumb"><img data-track-title="Naatain Sarkar Ki Parhta Hoon Mein" src="images/naatain-sarkar-ki-parhta-hoon-mein-official-cover-art.jpg" alt="Naatain Sarkar Ki Parhta Hoon Mein — official cover art" loading="lazy">
+      <div class="track-card" data-category="naat" onclick="openModal(this.querySelector('img').src, 'Naatain Sarkar Ki Parhta Hoon Mein', 'Naat', 'Naat')"><div class="track-thumb"><img data-track-title="Naatain Sarkar Ki Parhta Hoon Mein" src="images/naatain-sarkar-ki-parhta-hoon-mein-official-cover-art.jpg" alt="Naatain Sarkar Ki Parhta Hoon Mein — official cover art" loading="lazy" width="560" height="560">
           <span class="track-tag">Naat</span>
           <span class="play-badge">
             <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
@@ -1098,7 +1100,7 @@
           <p class="meta">Naat</p>
         </div>
       </div>
-      <div class="track-card" data-category="patriotic" onclick="openModal(this.querySelector('img').src, 'Aao Watan Ki Suno Kahani', 'Patriotic', 'Independence Day Special')"><div class="track-thumb"><img data-track-title="Aao Watan Ki Suno Kahani" src="images/aao-watan-ki-suno-kahani-official-cover-art.jpg" alt="Aao Watan Ki Suno Kahani — official cover art" loading="lazy">
+      <div class="track-card" data-category="patriotic" onclick="openModal(this.querySelector('img').src, 'Aao Watan Ki Suno Kahani', 'Patriotic', 'Independence Day Special')"><div class="track-thumb"><img data-track-title="Aao Watan Ki Suno Kahani" src="images/aao-watan-ki-suno-kahani-official-cover-art.jpg" alt="Aao Watan Ki Suno Kahani — official cover art" loading="lazy" width="560" height="560">
           <span class="track-tag">Patriotic</span>
           <span class="play-badge">
             <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
@@ -1109,7 +1111,7 @@
           <p class="meta">Independence Day Special</p>
         </div>
       </div>
-      <div class="track-card" data-category="patriotic" onclick="openModal(this.querySelector('img').src, 'Pak Sar Zameen — National Anthem', 'Patriotic', 'National Anthem')"><div class="track-thumb"><img data-track-title="Pak Sar Zameen — National Anthem" src="images/pak-sar-zameen-national-anthem-official-cover-art.jpg" alt="Pak Sar Zameen — National Anthem — official cover art" loading="lazy">
+      <div class="track-card" data-category="patriotic" onclick="openModal(this.querySelector('img').src, 'Pak Sar Zameen — National Anthem', 'Patriotic', 'National Anthem')"><div class="track-thumb"><img data-track-title="Pak Sar Zameen — National Anthem" src="images/pak-sar-zameen-national-anthem-official-cover-art.jpg" alt="Pak Sar Zameen — National Anthem — official cover art" loading="lazy" width="560" height="560">
           <span class="track-tag">Patriotic</span>
           <span class="play-badge">
             <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
@@ -1120,7 +1122,7 @@
           <p class="meta">National Anthem</p>
         </div>
       </div>
-      <div class="track-card" data-category="special" onclick="openModal(this.querySelector('img').src, 'Maa Baap Ka Dil Na Dukha', 'True Story', 'Reciter: Hiba Muzammil Qadri')"><div class="track-thumb"><img data-track-title="Maa Baap Ka Dil Na Dukha" src="images/maa-baap-ka-dil-na-dukha-official-cover-art.jpg" alt="Maa Baap Ka Dil Na Dukha — official cover art" loading="lazy">
+      <div class="track-card" data-category="special" onclick="openModal(this.querySelector('img').src, 'Maa Baap Ka Dil Na Dukha', 'True Story', 'Reciter: Hiba Muzammil Qadri')"><div class="track-thumb"><img data-track-title="Maa Baap Ka Dil Na Dukha" src="images/maa-baap-ka-dil-na-dukha-official-cover-art.jpg" alt="Maa Baap Ka Dil Na Dukha — official cover art" loading="lazy" width="560" height="560">
           <span class="track-tag">True Story</span>
           <span class="play-badge">
             <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
@@ -1131,7 +1133,7 @@
           <p class="meta">Reciter: Hiba Muzammil Qadri</p>
         </div>
       </div>
-      <div class="track-card" data-category="kalam" onclick="openModal(this.querySelector('img').src, 'Gunahon Par Hoon Sharminda', 'Kalam', 'Heart Touching Kalam · 2025')"><div class="track-thumb"><img data-track-title="Gunahon Par Hoon Sharminda" src="images/gunahon-par-hoon-sharminda-official-cover-art.jpg" alt="Gunahon Par Hoon Sharminda — official cover art" loading="lazy">
+      <div class="track-card" data-category="kalam" onclick="openModal(this.querySelector('img').src, 'Gunahon Par Hoon Sharminda', 'Kalam', 'Heart Touching Kalam · 2025')"><div class="track-thumb"><img data-track-title="Gunahon Par Hoon Sharminda" src="images/gunahon-par-hoon-sharminda-official-cover-art.jpg" alt="Gunahon Par Hoon Sharminda — official cover art" loading="lazy" width="560" height="560">
           <span class="track-tag">Kalam</span>
           <span class="play-badge">
             <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
@@ -1142,7 +1144,7 @@
           <p class="meta">Heart Touching Kalam · 2025</p>
         </div>
       </div>
-      <div class="track-card" data-category="special" onclick="openModal(this.querySelector('img').src, 'Pyara Quran', 'Special Track', 'New Special Track · 2025')"><div class="track-thumb"><img data-track-title="Pyara Quran" src="images/pyara-quran-official-cover-art.jpg" alt="Pyara Quran — official cover art" loading="lazy">
+      <div class="track-card" data-category="special" onclick="openModal(this.querySelector('img').src, 'Pyara Quran', 'Special Track', 'New Special Track · 2025')"><div class="track-thumb"><img data-track-title="Pyara Quran" src="images/pyara-quran-official-cover-art.jpg" alt="Pyara Quran — official cover art" loading="lazy" width="560" height="560">
           <span class="track-tag">Special Track</span>
           <span class="play-badge">
             <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
@@ -1153,7 +1155,7 @@
           <p class="meta">New Special Track · 2025</p>
         </div>
       </div>
-      <div class="track-card" data-category="naat" onclick="openModal(this.querySelector('img').src, 'Mera Nabi Sultan', 'Pashto Naat', 'New Pashto Naat · 2026')"><div class="track-thumb"><img data-track-title="Mera Nabi Sultan" src="images/mera-nabi-sultan-official-cover-art.jpg" alt="Mera Nabi Sultan — official cover art" loading="lazy">
+      <div class="track-card" data-category="naat" onclick="openModal(this.querySelector('img').src, 'Mera Nabi Sultan', 'Pashto Naat', 'New Pashto Naat · 2026')"><div class="track-thumb"><img data-track-title="Mera Nabi Sultan" src="images/mera-nabi-sultan-official-cover-art.jpg" alt="Mera Nabi Sultan — official cover art" loading="lazy" width="560" height="560">
           <span class="track-tag">Pashto Naat</span>
           <span class="play-badge">
             <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
@@ -1164,7 +1166,7 @@
           <p class="meta">New Pashto Naat · 2026</p>
         </div>
       </div>
-      <div class="track-card" data-category="naat" onclick="openModal(this.querySelector('img').src, 'Mustafa Jaan-e-Rehmat Pe', 'Naat', 'Lahore Salam')"><div class="track-thumb"><img data-track-title="Mustafa Jaan-e-Rehmat Pe" src="images/mustafa-jaan-e-rehmat-pe-official-cover-art.jpg" alt="Mustafa Jaan-e-Rehmat Pe — official cover art" loading="lazy">
+      <div class="track-card" data-category="naat" onclick="openModal(this.querySelector('img').src, 'Mustafa Jaan-e-Rehmat Pe', 'Naat', 'Lahore Salam')"><div class="track-thumb"><img data-track-title="Mustafa Jaan-e-Rehmat Pe" src="images/mustafa-jaan-e-rehmat-pe-official-cover-art.jpg" alt="Mustafa Jaan-e-Rehmat Pe — official cover art" loading="lazy" width="560" height="560">
           <span class="track-tag">Naat</span>
           <span class="play-badge">
             <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
@@ -1175,7 +1177,7 @@
           <p class="meta">Lahore Salam</p>
         </div>
       </div>
-      <div class="track-card" data-category="special" onclick="openModal(this.querySelector('img').src, 'Allah Mera Bhi Hai', 'Historical Song', 'Historical Song · 2026')"><div class="track-thumb"><img data-track-title="Allah Mera Bhi Hai" src="images/allah-mera-bhi-hai-official-cover-art.jpg" alt="Allah Mera Bhi Hai — official cover art" loading="lazy">
+      <div class="track-card" data-category="special" onclick="openModal(this.querySelector('img').src, 'Allah Mera Bhi Hai', 'Historical Song', 'Historical Song · 2026')"><div class="track-thumb"><img data-track-title="Allah Mera Bhi Hai" src="images/allah-mera-bhi-hai-official-cover-art.jpg" alt="Allah Mera Bhi Hai — official cover art" loading="lazy" width="560" height="560">
           <span class="track-tag">Historical Song</span>
           <span class="play-badge">
             <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
@@ -1281,7 +1283,7 @@
 <section class="section" id="kids">
   <div class="wrap feature-row">
     <div class="feature-media" data-reveal="left" id="embedKids" onclick="loadInlineEmbed('embedKids','DBtilsCExvk')">
-      <img src="images/learn-six-kalmas-animated-series.jpg" alt="Learn Six Kalmas animated series" loading="lazy">
+      <img src="images/learn-six-kalmas-animated-series.jpg" alt="Learn Six Kalmas animated series" loading="lazy" width="1000" height="700">
       <div class="inline-play-overlay"><div class="inline-play-btn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></div></div>
     </div>
     <div class="feature-copy" data-reveal="right">
@@ -1303,7 +1305,7 @@
 <section class="section alt">
   <div class="wrap feature-row reverse">
     <div class="feature-media" data-reveal="right" id="embedCollab" onclick="loadInlineEmbed('embedCollab','yvBeh2VWQ2Q')">
-      <img src="images/in-his-love-medley-international-collaboration.jpg" alt="In His Love medley — international collaboration" loading="lazy">
+      <img src="images/in-his-love-medley-international-collaboration.jpg" alt="In His Love medley — international collaboration" loading="lazy" width="900" height="900">
       <div class="inline-play-overlay"><div class="inline-play-btn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></div></div>
     </div>
     <div class="feature-copy" data-reveal="left">
@@ -1318,7 +1320,7 @@
 
   <div class="wrap">
     <div class="coming-soon-strip" data-reveal="up">
-      <img loading="lazy" src="images/13-rajab-special-coming-soon.jpg" alt="13 Rajab Special — coming soon">
+      <img loading="lazy" src="images/13-rajab-special-coming-soon.jpg" alt="13 Rajab Special — coming soon" width="560" height="746">
       <div class="txt">
         <span class="badge">Coming soon</span>
         <h4>13 Rajab Special</h4>
@@ -1348,7 +1350,7 @@
         <div class="track-info"><h4>Piyari Maa</h4><p class="meta">60M+ views, Alhamdulillah</p></div>
       </div>
 
-      <div class="track-card" data-category="special" onclick="openModal(this.querySelector('img').src, 'Maa Baap Ka Dil Na Dukha', 'Parents', 'True Story')"><div class="track-thumb"><img data-track-title="Maa Baap Ka Dil Na Dukha" src="images/maa-baap-ka-dil-na-dukha-official-cover-art-2.jpg" alt="Maa Baap Ka Dil Na Dukha — official cover art" loading="lazy">
+      <div class="track-card" data-category="special" onclick="openModal(this.querySelector('img').src, 'Maa Baap Ka Dil Na Dukha', 'Parents', 'True Story')"><div class="track-thumb"><img data-track-title="Maa Baap Ka Dil Na Dukha" src="images/maa-baap-ka-dil-na-dukha-official-cover-art-2.jpg" alt="Maa Baap Ka Dil Na Dukha — official cover art" loading="lazy" width="560" height="560">
           <span class="track-tag">Parents</span>
           <span class="play-badge"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span>
         </div>
@@ -1400,11 +1402,11 @@
       <h2>Moments on stage &amp; off</h2>
     </div>
     <div class="gallery-grid" data-reveal="stagger">
-      <figure data-gallery-order="1" onclick="openLightbox(this.querySelector('img').src)"><img id="galleryImg1" src="images/hiba-muzammil-qadri-portrait.jpg" alt="Hiba Muzammil Qadri portrait" loading="lazy"></figure>
-      <figure data-gallery-order="2" onclick="openLightbox(this.querySelector('img').src)"><img id="galleryImg2" src="images/hiba-muzammil-qadri-portrait-2.jpg" alt="Hiba performing with microphone" loading="lazy"></figure>
-      <figure data-gallery-order="3" onclick="openLightbox(this.querySelector('img').src)"><img id="galleryImg3" src="images/hiba-performing-with-microphone.jpg" alt="Hiba Muzammil Qadri close portrait" loading="lazy"></figure>
-      <figure data-gallery-order="4" onclick="openLightbox(this.querySelector('img').src)"><img id="galleryImg4" src="images/hiba-muzammil-qadri-close-portrait.jpg" alt="Hiba Muzammil Qadri candid portrait" loading="lazy"></figure>
-      <figure data-gallery-order="5" onclick="openLightbox(this.querySelector('img').src)"><img id="galleryImg5" src="images/hiba-muzammil-qadri-candid-portrait.jpg" alt="Hiba Muzammil Qadri portrait with floral bracelet" loading="lazy"></figure>
+      <figure data-gallery-order="1" onclick="openLightbox(this.querySelector('img').src)"><img id="galleryImg1" src="images/hiba-muzammil-qadri-portrait.jpg" alt="Hiba Muzammil Qadri portrait" loading="lazy" width="640" height="800"></figure>
+      <figure data-gallery-order="2" onclick="openLightbox(this.querySelector('img').src)"><img id="galleryImg2" src="images/hiba-muzammil-qadri-portrait-2.jpg" alt="Hiba performing with microphone" loading="lazy" width="760" height="950"></figure>
+      <figure data-gallery-order="3" onclick="openLightbox(this.querySelector('img').src)"><img id="galleryImg3" src="images/hiba-performing-with-microphone.jpg" alt="Hiba Muzammil Qadri close portrait" loading="lazy" width="640" height="800"></figure>
+      <figure data-gallery-order="4" onclick="openLightbox(this.querySelector('img').src)"><img id="galleryImg4" src="images/hiba-muzammil-qadri-close-portrait.jpg" alt="Hiba Muzammil Qadri candid portrait" loading="lazy" width="640" height="800"></figure>
+      <figure data-gallery-order="5" onclick="openLightbox(this.querySelector('img').src)"><img id="galleryImg5" src="images/hiba-muzammil-qadri-candid-portrait.jpg" alt="Hiba Muzammil Qadri portrait with floral bracelet" loading="lazy" width="640" height="800"></figure>
     </div>
   </div>
 </section>
@@ -1441,15 +1443,15 @@
       <h3>On YouTube</h3>
       <div class="pl-yt-grid" data-reveal="stagger" style="display:grid; grid-template-columns:repeat(4,1fr); gap:20px;">
         <div class="inline-embed" id="embedPL1" onclick="loadInlineEmbed('embedPL1','iIHwZzW6wIU')" style="border-radius:12px; overflow:hidden; box-shadow:var(--shadow-sm); border:1px solid rgba(174,132,52,.3);">
-          <img loading="lazy" src="images/al-eid-takbirat.jpg" alt="Al-Eid Takbirat" style="width:100%; aspect-ratio:6/5; object-fit:cover;">
+          <img loading="lazy" src="images/al-eid-takbirat.jpg" alt="Al-Eid Takbirat" style="width:100%; aspect-ratio:6/5; object-fit:cover;" width="560" height="560">
           <div class="inline-play-overlay"><div class="inline-play-btn" style="width:48px; height:48px;"><svg viewBox="0 0 24 24" fill="currentColor" style="width:18px; height:18px;"><path d="M8 5v14l11-7z"/></svg></div></div>
         </div>
         <div class="inline-embed" id="embedPL2" onclick="loadInlineEmbed('embedPL2','szyVM4KlaH8')" style="border-radius:12px; overflow:hidden; box-shadow:var(--shadow-sm); border:1px solid rgba(174,132,52,.3);">
-          <img loading="lazy" src="images/mera-nabi-sultan.jpg" alt="Mera Nabi Sultan" style="width:100%; aspect-ratio:6/5; object-fit:cover;">
+          <img loading="lazy" src="images/mera-nabi-sultan.jpg" alt="Mera Nabi Sultan" style="width:100%; aspect-ratio:6/5; object-fit:cover;" width="560" height="560">
           <div class="inline-play-overlay"><div class="inline-play-btn" style="width:48px; height:48px;"><svg viewBox="0 0 24 24" fill="currentColor" style="width:18px; height:18px;"><path d="M8 5v14l11-7z"/></svg></div></div>
         </div>
         <div class="inline-embed" id="embedPL3" onclick="loadInlineEmbed('embedPL3','EAi-BJWiAKI')" style="border-radius:12px; overflow:hidden; box-shadow:var(--shadow-sm); border:1px solid rgba(174,132,52,.3);">
-          <img loading="lazy" src="images/madina-wara-sawariya.jpg" alt="Madina Wara Sawariya" style="width:100%; aspect-ratio:6/5; object-fit:cover;">
+          <img loading="lazy" src="images/madina-wara-sawariya.jpg" alt="Madina Wara Sawariya" style="width:100%; aspect-ratio:6/5; object-fit:cover;" width="560" height="560">
           <div class="inline-play-overlay"><div class="inline-play-btn" style="width:48px; height:48px;"><svg viewBox="0 0 24 24" fill="currentColor" style="width:18px; height:18px;"><path d="M8 5v14l11-7z"/></svg></div></div>
         </div>
         <div class="inline-embed" id="embedPL4" onclick="loadInlineEmbed('embedPL4','pFB1GRlQbUM')" style="border-radius:12px; overflow:hidden; box-shadow:var(--shadow-sm); border:1px solid rgba(174,132,52,.3); background:linear-gradient(155deg, var(--burgundy), var(--plum) 60%, var(--emerald-deep)); display:flex; align-items:center; justify-content:center; aspect-ratio:6/5; position:relative;">
@@ -1601,7 +1603,7 @@
   <div class="wrap footer-inner">
     <div class="footer-top">
       <div class="footer-brand">
-        <img loading="lazy" src="images/hiba-muzammil-qadri.png" alt="Hiba Muzammil Qadri">
+        <img loading="lazy" src="images/hiba-muzammil-qadri.png" alt="Hiba Muzammil Qadri" width="420" height="420">
         <p>Voice of Faith. Melody of the Heart. The official home of Pakistani nasheed artist Hiba Muzammil Qadri.</p>
       </div>
       <div class="footer-col">
