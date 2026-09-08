@@ -1464,7 +1464,7 @@
 
     <div class="connect-block" style="margin-top:56px;">
       <h3>Her Playlists</h3>
-      <div class="pl-yt-grid" data-reveal="stagger" style="display:grid; grid-template-columns:repeat(3,1fr); gap:22px;">
+      <div class="pl-yt-grid" id="playlistsGrid" data-reveal="stagger" style="display:grid; grid-template-columns:repeat(3,1fr); gap:22px;">
         <div class="inline-embed" id="embedYTPL1" onclick="loadInlinePlaylist('embedYTPL1','PLoxxj3cT59SdYviAf5e6q32fqdMt88CIH')" style="border-radius:12px; overflow:hidden; box-shadow:var(--shadow-sm); border:1px solid rgba(174,132,52,.3); background:linear-gradient(155deg, var(--emerald), var(--emerald-deep)); aspect-ratio:16/10; display:flex; align-items:center; justify-content:center; position:relative; padding:14px;">
           <span style="color:var(--ivory); font-family:var(--serif); font-size:1.05rem; line-height:1.3; text-align:center; z-index:2;">Soulful Duas &amp; Nasheeds<br><span style="font-size:.72rem; opacity:.78; font-style:italic;">Healing Prayers</span></span>
           <div class="inline-play-overlay"><div class="inline-play-btn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></div></div>
@@ -2119,6 +2119,71 @@
         renderLangContent(byLang[populatedLanguages[0]._id] || []);
       })
       .catch(() => { /* Sanity unreachable — keep "Languages launching soon" as-is */ });
+  })();
+
+  // ---------- SANITY CMS: PLAYLISTS (progressive enhancement) ----------
+  // Rebuilds "Her Playlists" from Sanity's `playlist` documents so that
+  // adding, editing, reordering or removing a playlist in the CMS updates
+  // the website automatically — no code changes needed. If Sanity is
+  // unreachable, the 5 playlist cards already in the HTML stay exactly as
+  // they are and nothing breaks.
+  (function loadPlaylistsFromSanity(){
+    const SANITY_PROJECT_ID = '7rufe5dw';
+    const SANITY_DATASET = 'production';
+    const query = encodeURIComponent(
+      '*[_type=="playlist" && active==true] | order(order asc){title, subtitle, platform, playlistId, coverColor}'
+    );
+    const url = `https://${SANITY_PROJECT_ID}.api.sanity.io/v2025-08-15/data/query/${SANITY_DATASET}?query=${query}`;
+
+    const GRADIENTS = {
+      emerald: 'linear-gradient(155deg, var(--emerald), var(--emerald-deep))',
+      burgundy: 'linear-gradient(155deg, var(--burgundy), var(--plum))',
+      peacock: 'linear-gradient(155deg, var(--peacock), var(--emerald-deep))',
+      gold: 'linear-gradient(155deg, var(--gold), #8a6420)',
+      plum: 'linear-gradient(155deg, var(--plum), var(--burgundy))',
+    };
+
+    function extractYouTubeListId(url){
+      const m = url && url.match(/[?&]list=([a-zA-Z0-9_-]+)/);
+      return m ? m[1] : null;
+    }
+
+    fetch(url)
+      .then(res => res.ok ? res.json() : Promise.reject(new Error('Sanity request failed')))
+      .then(data => {
+        const items = (data.result || []).filter(p => p.platform === 'youtube' && extractYouTubeListId(p.playlistId));
+        if(items.length === 0) return; // keep existing hardcoded playlists
+
+        const grid = document.getElementById('playlistsGrid');
+        if(!grid) return;
+        grid.innerHTML = '';
+
+        items.forEach((p, i) => {
+          const listId = extractYouTubeListId(p.playlistId);
+          const containerId = `cmsPlaylist${i}`;
+          const card = document.createElement('div');
+          card.className = 'inline-embed';
+          card.id = containerId;
+          card.style.cssText = `border-radius:12px; overflow:hidden; box-shadow:var(--shadow-sm); border:1px solid rgba(174,132,52,.3); background:${GRADIENTS[p.coverColor] || GRADIENTS.emerald}; aspect-ratio:16/10; display:flex; align-items:center; justify-content:center; position:relative; padding:14px; cursor:pointer;`;
+
+          const label = document.createElement('span');
+          label.style.cssText = 'color:var(--ivory); font-family:var(--serif); font-size:1.05rem; line-height:1.3; text-align:center; z-index:2;';
+          label.textContent = p.title;
+          if(p.subtitle){
+            label.appendChild(document.createElement('br'));
+            const sub = document.createElement('span');
+            sub.style.cssText = 'font-size:.72rem; opacity:.78; font-style:italic;';
+            sub.textContent = p.subtitle;
+            label.appendChild(sub);
+          }
+          card.appendChild(label);
+          card.insertAdjacentHTML('beforeend', '<div class="inline-play-overlay"><div class="inline-play-btn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></div></div>');
+
+          card.addEventListener('click', () => loadInlinePlaylist(containerId, listId));
+          grid.appendChild(card);
+        });
+      })
+      .catch(() => { /* Sanity unreachable — keep the 5 existing playlist cards as-is */ });
   })();
 
   // ---------- CONTACT & ARTIST INQUIRY SYSTEM ----------

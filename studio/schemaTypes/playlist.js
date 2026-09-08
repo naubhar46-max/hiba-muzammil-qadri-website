@@ -13,6 +13,12 @@ export default defineType({
       validation: (Rule) => Rule.required(),
     }),
     defineField({
+      name: 'subtitle',
+      title: 'Short Subtitle (optional)',
+      type: 'string',
+      description: 'A few words shown under the name, e.g. "Healing Prayers".',
+    }),
+    defineField({
       name: 'platform',
       title: 'Where is this playlist?',
       type: 'string',
@@ -64,6 +70,6 @@ export default defineType({
     {title: 'Display Order', name: 'orderAsc', by: [{field: 'order', direction: 'asc'}]},
   ],
   preview: {
-    select: {title: 'title', subtitle: 'platform'},
+    select: {title: 'title', subtitle: 'subtitle'},
   },
 })
